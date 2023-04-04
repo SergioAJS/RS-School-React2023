@@ -1,19 +1,15 @@
-import { Component, ReactNode } from 'react';
-
-export class FormCard extends Component<{
+export const FormCard: (props: {
   name: string;
   music: boolean;
   movie: boolean;
   sex: string;
-}> {
-  render(): ReactNode {
-    return (
-      <div>
-        {this.props.name}
-        {this.props.music && `music`}
-        {this.props.movie && `movie`}
-        {this.props.sex}
-      </div>
-    );
-  }
-}
+}) => JSX.Element = (props: { name: string; music: boolean; movie: boolean; sex: string }) => {
+  return (
+    <div>
+      {props.name}
+      {props.music && `music`}
+      {props.movie && `movie`}
+      {props.sex}
+    </div>
+  );
+};
