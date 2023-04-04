@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ICharacters } from '../components/models/ICharacters';
-import { ICharacter } from '../components/models/ICharacter';
+import { ICharacters } from '../models/ICharacters';
+import { ICharacter } from '../models/ICharacter';
 
 export const useCards = () => {
-  const [characters, setCharacters] = useState<ICharacter[]>([]);
+  const [characters, setCharacters] = useState<ICharacter[] | null>(null);
 
   const fetchCards = async () => {
     try {

@@ -1,7 +1,8 @@
 import { Card } from '../Card/CharacterCard';
-import styles from './Cards.module.scss';
 import { useCards } from '../../hooks/useCards';
-import { ICharacter } from '../models/ICharacter';
+import { ICharacter } from '../../models/ICharacter';
+import { Loader } from '../Loader/Loader';
+import styles from './Cards.module.scss';
 
 export const Cards: () => JSX.Element = () => {
   const { characters } = useCards();
@@ -11,7 +12,7 @@ export const Cards: () => JSX.Element = () => {
   };
 
   if (!characters) {
-    return <></>;
+    return <Loader />;
   }
 
   return <ul className={styles.cards}>{renderQuotes(characters)}</ul>;

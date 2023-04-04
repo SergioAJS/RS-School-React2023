@@ -1,4 +1,4 @@
-import { ICharacter } from '../models/ICharacter';
+import { ICharacter } from '../../models/ICharacter';
 import styles from './Card.module.scss';
 
 export interface CardProps {
