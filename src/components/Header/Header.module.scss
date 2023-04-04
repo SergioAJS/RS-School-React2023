@@ -1,0 +1,27 @@
+.header {
+  background-color: rgb(68, 76, 76);
+
+  .links__list {
+    display: flex;
+    gap: 30px;
+
+    .link__item {
+      list-style: none;
+
+      .link {
+        color: rgba(255, 255, 255, 0.87);
+        text-decoration: none;
+        transition: all 0.3s;
+
+        &:hover {
+          color: rgb(244, 117, 117);
+        }
+      }
+
+      .link__active {
+        text-decoration: none;
+        color: red;
+      }
+    }
+  }
+}
