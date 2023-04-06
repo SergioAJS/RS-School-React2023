@@ -18,7 +18,7 @@ export const CardModal = ({ onClose }: ModalProps) => {
 
   return (
     <>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} onClick={onClose}></div>
       <div className={styles.modal}>
         <img className={styles.close} src={closeIcon} alt="close" title="Close" onClick={onClose} />
         <h3 className={styles.name}>{characters[characterId - 1].name}</h3>
