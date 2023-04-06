@@ -4,16 +4,22 @@ import { ICharacter } from '../../models/ICharacter';
 import { Loader } from '../Loader/Loader';
 import styles from './Cards.module.scss';
 
-export const Cards: () => JSX.Element = () => {
+interface ModalProps {
+  onOpen: () => void;
+}
+
+export const Cards = ({ onOpen }: ModalProps) => {
   const { characters } = useCards();
 
-  const renderQuotes = (quotes: ICharacter[]) => {
-    return quotes.map((character: ICharacter) => <Card character={character} key={character.id} />);
+  const renderCharacters = (characters: ICharacter[]) => {
+    return characters.map((character: ICharacter) => (
+      <Card character={character} key={character.id} onOpen={onOpen} />
+    ));
   };
 
   if (!characters) {
     return <Loader />;
   }
 
-  return <ul className={styles.cards}>{renderQuotes(characters)}</ul>;
+  return <ul className={styles.cards}>{renderCharacters(characters)}</ul>;
 };

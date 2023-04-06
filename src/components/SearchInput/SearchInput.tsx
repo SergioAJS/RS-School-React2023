@@ -8,7 +8,6 @@ export const SearchInput: () => JSX.Element = () => {
     const input = event.currentTarget;
     const value = input.value;
     setInputValue(value);
-    localStorage.setItem('inputValue', value);
   };
 
   useEffect(() => {
@@ -20,6 +19,7 @@ export const SearchInput: () => JSX.Element = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    localStorage.setItem('inputValue', inputValue);
   };
 
   return (
