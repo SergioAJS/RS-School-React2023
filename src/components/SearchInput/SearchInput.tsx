@@ -1,33 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { CardContext } from '../../Context/Context';
 import styles from '../SearchInput/SearchInput.module.scss';
 
 export const SearchInput: () => JSX.Element = () => {
-  const [inputValue, setInputValue] = useState('');
-
-  const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const input = event.currentTarget;
-    const value = input.value;
-    setInputValue(value);
-  };
-
-  useEffect(() => {
-    const inputValue = localStorage.getItem('inputValue');
-    if (inputValue) {
-      setInputValue(inputValue);
-    }
-  }, []);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    localStorage.setItem('inputValue', inputValue);
-  };
+  const { inputValue, onChange, handleSubmit } = useContext(CardContext);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label htmlFor="search">
         <input
           className={styles.search}
-          type="text"
+          type="search"
           name="search"
           value={inputValue}
           onChange={onChange}
