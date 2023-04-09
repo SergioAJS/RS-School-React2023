@@ -12,7 +12,7 @@ export const Home: () => JSX.Element = () => {
   const [modal, setModal] = useState(true);
   const [modalCharacter, setModalCharacter] = useState<ICharacter | null>(null);
   const [inputValue, setInputValue] = useState('');
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string | null>(localStorage.getItem('inputValue'));
 
   const modalClose = () => {
     setModal(false);

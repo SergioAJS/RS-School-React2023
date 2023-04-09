@@ -7,7 +7,7 @@ export interface IContext {
   inputValue: string;
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  search: string;
+  search: string | null;
   modalCharacter: ICharacter | null;
   setModalCharacter: Dispatch<ICharacter>;
 }

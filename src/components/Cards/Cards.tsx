@@ -1,38 +1,31 @@
 import { Card } from '../Card/CharacterCard';
-import { useCards } from '../../hooks/useCards';
 import { ICharacter } from '../../models/ICharacter';
 import { Loader } from '../Loader/Loader';
-import { useEffect, useState } from 'react';
 import { useSearch } from '../../hooks/useSearch';
 import styles from './Cards.module.scss';
 
-interface ModalProps {
+interface CardsProps {
   onOpen: () => void;
-  search: string;
+  search: string | null;
 }
 
-export const Cards = ({ onOpen, search }: ModalProps) => {
-  const { characters } = useCards();
-  const { searchCharacters } = useSearch(search);
-  const [charactersToRender, setCharactersToRender] = useState<ICharacter[] | null>(null);
+export const Cards = ({ onOpen, search }: CardsProps) => {
+  const { searchCharacters, isLoading, error } = useSearch(search);
 
-  useEffect(() => {
-    if (search) {
-      setCharactersToRender(searchCharacters);
-    } else {
-      setCharactersToRender(characters);
-    }
-  }, [characters, search, searchCharacters]);
-
-  const renderCharacters = (charactersToRender: ICharacter[]) => {
-    return charactersToRender.map((character: ICharacter) => (
+  const renderCharacters = (searchCharacters: ICharacter[]) => {
+    return searchCharacters.map((character: ICharacter) => (
       <Card character={character} key={character.id} onOpen={onOpen} />
     ));
   };
 
-  if (!charactersToRender) {
-    return <Loader />;
+  if (!searchCharacters) {
+    return <>{error && <p className={styles.error}>{error}</p>}</>;
   }
 
-  return <ul className={styles.cards}>{renderCharacters(charactersToRender)}</ul>;
+  return (
+    <>
+      {isLoading && <Loader />}
+      <ul className={styles.cards}>{renderCharacters(searchCharacters)}</ul>;
+    </>
+  );
 };

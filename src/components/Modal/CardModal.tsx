@@ -24,13 +24,13 @@ export const CardModal = ({ onClose }: ModalProps) => {
         <h3 className={styles.name}>{modalCharacter.name}</h3>
         <img className={styles.image} src={modalCharacter.image} alt={modalCharacter.name} />
         <div className={styles.description}>
-          <p className={styles.status}>ID: {modalCharacter.id}</p>
-          <p className={styles.status}>Status: {modalCharacter.status}</p>
-          <p className={styles.species}>Species: {modalCharacter.species}</p>
-          <p className={styles.type}>Type: {modalCharacter.type}</p>
-          <p className={styles.gender}>Gender: {modalCharacter.gender}</p>
-          <p className={styles.origin}>Origin: {modalCharacter.origin.name}</p>
-          <p className={styles.location}>Location: {modalCharacter.location.name}</p>
+          <p className={styles.description_param}>ID: {modalCharacter.id}</p>
+          <p className={styles.description_param}>Status: {modalCharacter.status}</p>
+          <p className={styles.description_param}>Species: {modalCharacter.species}</p>
+          <p className={styles.description_param}>Type: {modalCharacter.type}</p>
+          <p className={styles.description_param}>Gender: {modalCharacter.gender}</p>
+          <p className={styles.description_param}>Origin: {modalCharacter.origin.name}</p>
+          <p className={styles.description_param}>Location: {modalCharacter.location.name}</p>
         </div>
       </div>
     </>
