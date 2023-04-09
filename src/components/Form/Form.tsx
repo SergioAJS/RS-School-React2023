@@ -31,7 +31,6 @@ export const Form: (
         ? target.id
         : target.value;
     // const name = target.name;
-
     console.log(value);
   };
 
@@ -73,7 +72,7 @@ export const Form: (
 
       <div>
         <label htmlFor="birthDate" className={styles.label}>
-          Your birthdate
+          Your birthday date
         </label>
         <input type="date" name="birthDate" className={styles.input} />
       </div>
