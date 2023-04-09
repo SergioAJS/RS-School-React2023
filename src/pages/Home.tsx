@@ -1,5 +1,5 @@
 import { SearchInput } from '../components/SearchInput/SearchInput';
-import { ClassHeader } from '../components/Header/Header';
+import { Header } from '../components/Header/Header';
 import { Cards } from '../components/Cards/Cards';
 import { CardModal } from '../components/Modal/CardModal';
 import { useEffect, useState } from 'react';
@@ -55,7 +55,7 @@ export const Home: () => JSX.Element = () => {
       }}
     >
       <div className={styles.home}>
-        <ClassHeader />
+        <Header />
         <SearchInput />
         <Cards onOpen={modalOpen} search={search} />
         {modal && <CardModal onClose={modalClose} modalCharacter={modalCharacter} />}
