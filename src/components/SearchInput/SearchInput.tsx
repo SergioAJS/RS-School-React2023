@@ -12,6 +12,7 @@ export const SearchInput: () => JSX.Element = () => {
           className={styles.search}
           type="search"
           name="search"
+          placeholder="You can search by the character name"
           value={inputValue}
           onChange={onChange}
         />
