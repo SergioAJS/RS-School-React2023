@@ -12,7 +12,7 @@ export const Form: (
   props: { updateData: (value: string, music: boolean, movie: boolean, sex: string) => void }
   // { name: string; music: boolean; movie: boolean; sex: string }
 ) => {
-  const [data, setData] = useState({
+  const [data] = useState({
     name: '',
     // birthDate: Date.now,
     // country: 'Belarus',
@@ -30,26 +30,26 @@ export const Form: (
         : target.type === 'radio'
         ? target.id
         : target.value;
-    const name = target.name;
+    // const name = target.name;
 
     console.log(value);
   };
 
-  const handleCheckboxChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const target = event.currentTarget;
-    const checked = target.checked;
-    const name = target.name;
+  // const handleCheckboxChange = (event: React.FormEvent<HTMLInputElement>) => {
+  //   const target = event.currentTarget;
+  //   const checked = target.checked;
+  //   const name = target.name;
 
-    //   this.setState({
-    //     // name: value,
-    //     // birthDate: value,
-    //     // country: value,
-    //     // sex: value,
-    //     [name]: checked,
-    //     // movie: checked,
-    //     // coding: value,
-    //   });
-  };
+  //   this.setState({
+  //     // name: value,
+  //     // birthDate: value,
+  //     // country: value,
+  //     // sex: value,
+  //     [name]: checked,
+  //     // movie: checked,
+  //     // coding: value,
+  //   });
+  // };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
