@@ -1,17 +1,16 @@
 import { Card } from '../Card/CharacterCard';
 import { ICharacter } from '../../models/ICharacter';
 import { Loader } from '../Loader/Loader';
-import { useSearch } from '../../hooks/useSearch';
 import styles from './Cards.module.scss';
 
 interface CardsProps {
   onOpen: () => void;
-  search: string | null;
+  searchCharacters: ICharacter[] | null;
+  isLoading: boolean;
+  error: string | null;
 }
 
-export const Cards = ({ onOpen, search }: CardsProps) => {
-  const { searchCharacters, isLoading, error } = useSearch(search);
-
+export const Cards = ({ onOpen, searchCharacters, isLoading, error }: CardsProps) => {
   const renderCharacters = (searchCharacters: ICharacter[]) => {
     return searchCharacters.map((character: ICharacter) => (
       <Card character={character} key={character.id} onOpen={onOpen} />
