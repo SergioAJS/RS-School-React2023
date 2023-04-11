@@ -5,7 +5,7 @@ import { testCharacter } from '../mock/handlers';
 
 const mockCardClick = vi.fn();
 
-describe('Cards component', async () => {
+describe('Cards component', () => {
   it('Renders list of cards', () => {
     render(
       <Cards

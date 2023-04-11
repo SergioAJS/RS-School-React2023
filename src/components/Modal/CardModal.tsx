@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import closeIcon from '../../resources/close.svg';
-import { CardContext } from '../../Context/Context';
 import { ICharacter } from '../../models/ICharacter';
 import styles from './CardModal.module.scss';
 
@@ -9,9 +7,7 @@ interface ModalProps {
   modalCharacter: ICharacter | null;
 }
 
-export const CardModal = ({ onClose }: ModalProps) => {
-  const { modalCharacter } = useContext(CardContext);
-
+export const CardModal = ({ onClose, modalCharacter }: ModalProps) => {
   if (!modalCharacter) {
     return <></>;
   }

@@ -52,7 +52,6 @@ export const Home: () => JSX.Element = () => {
         onChange,
         handleSubmit,
         search,
-        modalCharacter,
         setModalCharacter,
       }}
     >

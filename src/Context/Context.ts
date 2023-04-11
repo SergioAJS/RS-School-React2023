@@ -8,7 +8,6 @@ const contextObj: IContext = {
   onChange: () => {},
   handleSubmit: () => {},
   search: '',
-  modalCharacter: null,
   setModalCharacter: () => {},
 };
 

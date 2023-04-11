@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { SearchInput } from '../components/SearchInput/SearchInput';
-import { describe, it } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
+import { App } from '../App';
 
-describe('App', () => {
-  it('Search button has "Search" value', () => {
-    render(<SearchInput />);
-    expect(screen.getByRole('button')).toHaveValue('Search');
+describe('Home page', () => {
+  it('Renders Home page', () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>
+    );
 
     const searchInput: HTMLInputElement = screen.getByPlaceholderText(
       'You can search by the character name'
