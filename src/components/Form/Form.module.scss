@@ -76,5 +76,16 @@
 
   .submit {
     align-self: center;
+    cursor: pointer;
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgb(108, 105, 105);
+    outline: none;
+    border: none;
+    transition: background-color 0.4s;
+
+    &:hover {
+      background-color: rgb(99, 97, 97);
+    }
   }
 }
