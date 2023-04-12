@@ -10,6 +10,6 @@ describe('Form page', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByPlaceholderText('Your name')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
   });
 });
