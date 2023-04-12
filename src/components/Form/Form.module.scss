@@ -3,35 +3,59 @@
   flex-direction: column;
   gap: 15px;
   align-self: center;
-  width: 50vw;
+  width: 55vw;
   border: 1px solid pink;
   border-radius: 10px;
   padding: 20px;
   background-color: rgb(63, 63, 62);
 
-  p {
-    font-size: 1.1rem;
-    margin: 0;
+  .inputs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+
+    .input_instance {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-bottom: 1px solid rgb(248, 255, 49);
+      padding: 5px;
+      padding-bottom: 20px;
+
+      .label {
+        font-size: 1rem;
+        margin: 0 5px 0 5px;
+        cursor: pointer;
+      }
+
+      .input {
+        height: 30px;
+        cursor: pointer;
+      }
+
+      .error {
+        font-size: 0.8rem;
+        color: rgb(80, 176, 224);
+        margin: 0;
+        height: 20px;
+        content: '';
+      }
+
+      .payment {
+        display: flex;
+        gap: 20px;
+
+        .multiselect {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
   }
 
-  .label {
-    margin-right: 5px;
-    margin-left: 10px;
+  .submit {
+    align-self: center;
   }
-
-  // .input__file {
-  //   width: 0.1px;
-  //   height: 0.1px;
-  //   opacity: 0;
-  //   overflow: hidden;
-  //   position: absolute;
-  //   z-index: -1;
-  // }
-
-  // .input__file__label {
-  //   color: white;
-  //   background-color: black;
-  //   display: inline-block;
-  //   cursor: pointer;
-  // }
 }

@@ -12,14 +12,10 @@ export const FormPage: () => JSX.Element = () => {
     sex: '',
   });
 
-  const updateData = (value: string, music: boolean, movie: boolean, sex: string) => {
-    setData({ name: value, music: music, movie: movie, sex: sex });
-  };
-
   return (
     <div className={styles.form__page}>
       <Header />
-      <Form updateData={updateData} />
+      <Form />
       <FormCard name={data.name} music={data.music} movie={data.movie} sex={data.sex} />
     </div>
   );
