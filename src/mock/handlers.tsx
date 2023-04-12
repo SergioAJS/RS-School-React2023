@@ -1,6 +1,6 @@
 import { rest } from 'msw';
-import { Status } from '../models/Status';
 import { Gender } from '../models/Gender';
+import { Status } from '../models/Status';
 
 const url = 'https://rickandmortyapi.com/api/character';
 

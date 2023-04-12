@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import { Cards } from '../components/Cards/Cards';
 import { testCharacter } from '../mock/handlers';
 

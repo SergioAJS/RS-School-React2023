@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import { CardModal } from '../components/Modal/CardModal';
-import { Status } from '../models/Status';
 import { Gender } from '../models/Gender';
 import { ICharacter } from '../models/ICharacter';
+import { Status } from '../models/Status';
 
 const testCharacter: ICharacter = {
   id: 1,

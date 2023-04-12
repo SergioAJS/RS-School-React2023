@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ICharacters } from '../models/ICharacters';
 import { ICharacter } from '../models/ICharacter';
+import { ICharacters } from '../models/ICharacters';
 
 export const useSearch = (searchValue: string | null) => {
   const [searchCharacters, setSearchCharacters] = useState<ICharacter[] | null>([]);

@@ -1,5 +1,5 @@
-import { Card } from '../Card/CharacterCard';
 import { ICharacter } from '../../models/ICharacter';
+import { Card } from '../Card/CharacterCard';
 import { Loader } from '../Loader/Loader';
 import styles from './Cards.module.scss';
 

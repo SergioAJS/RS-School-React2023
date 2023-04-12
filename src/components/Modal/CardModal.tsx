@@ -1,5 +1,5 @@
-import closeIcon from '../../resources/close.svg';
 import { ICharacter } from '../../models/ICharacter';
+import closeIcon from '../../resources/close.svg';
 import styles from './CardModal.module.scss';
 
 interface ModalProps {

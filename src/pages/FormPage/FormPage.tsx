@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Form } from '../../components/Form/Form';
 import { FormCard } from '../../components/FormCard/FormCard';
 import { Header } from '../../components/Header/Header';
-import styles from './FormPage.module.scss';
 import { IFormCardData } from '../../models/IFormCardData';
+import styles from './FormPage.module.scss';
 
 export const FormPage: () => JSX.Element = () => {
   const [formData, setFormData] = useState<IFormCardData[]>([]);

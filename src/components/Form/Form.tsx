@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { IFormData } from '../../models/IFormData';
 import { countries } from '../../models/Countries';
-import styles from './Form.module.scss';
+import { IFormCardData } from '../../models/IFormCardData';
+import { IFormData } from '../../models/IFormData';
 import { packaging } from '../../models/Packages';
 import { payments } from '../../models/Payments';
-import { useState } from 'react';
-import { IFormCardData } from '../../models/IFormCardData';
+import styles from './Form.module.scss';
 
 interface FormProps {
   handleFormSubmit: (newCard: IFormCardData[]) => void;

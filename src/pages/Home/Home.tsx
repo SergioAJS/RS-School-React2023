@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { SearchInput } from '../../components/SearchInput/SearchInput';
-import { Header } from '../../components/Header/Header';
 import { Cards } from '../../components/Cards/Cards';
+import { Header } from '../../components/Header/Header';
 import { CardModal } from '../../components/Modal/CardModal';
+import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { CardContext } from '../../context/Context';
-import { ICharacter } from '../../models/ICharacter';
 import { useSearch } from '../../hooks/useSearch';
+import { ICharacter } from '../../models/ICharacter';
 import styles from './Home.module.scss';
 
 export const Home: () => JSX.Element = () => {
