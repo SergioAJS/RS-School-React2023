@@ -1,23 +1,37 @@
 import { useForm } from 'react-hook-form';
-import { FormData } from '../../models/IFormData';
+import { IFormData } from '../../models/IFormData';
 import { countries } from '../../models/Countries';
 import styles from './Form.module.scss';
 import { packaging } from '../../models/Packages';
 import { payments } from '../../models/Payments';
 import { useState } from 'react';
+import { IFormCardData } from '../../models/IFormCardData';
 
-export const Form = () => {
+interface FormProps {
+  handleFormSubmit: (newCard: IFormCardData[]) => void;
+}
+
+export const Form = ({ handleFormSubmit }: FormProps) => {
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<FormData>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+  } = useForm<IFormData>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = (data: IFormData) => {
+    handleFormSubmit([
+      {
+        firstName: data.firstName,
+        deliveryDate: data.deliveryDate,
+        country: data.country,
+        package: data.package,
+        payment: data.payment,
+        imageFile: URL.createObjectURL(data.imageFile![0]),
+      },
+    ]);
     reset();
   };
 

@@ -3,20 +3,28 @@ import { Form } from '../../components/Form/Form';
 import { FormCard } from '../../components/FormCard/FormCard';
 import { Header } from '../../components/Header/Header';
 import styles from './FormPage.module.scss';
+import { IFormCardData } from '../../models/IFormCardData';
 
 export const FormPage: () => JSX.Element = () => {
-  const [data, setData] = useState({
-    name: '',
-    music: false,
-    movie: false,
-    sex: '',
-  });
+  const [formData, setFormData] = useState<IFormCardData[]>([]);
+
+  const handleFormSubmit = (newCard: IFormCardData[]) => {
+    setFormData([...formData, ...newCard]);
+  };
 
   return (
     <div className={styles.form__page}>
       <Header />
-      <Form />
-      <FormCard name={data.name} music={data.music} movie={data.movie} sex={data.sex} />
+      <Form
+        handleFormSubmit={(newCard) => {
+          handleFormSubmit(newCard);
+        }}
+      />
+      <div className={styles.user_cards}>
+        {formData.map((item, index) => {
+          return <FormCard formData={item} key={index} />;
+        })}
+      </div>
     </div>
   );
 };

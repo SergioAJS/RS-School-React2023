@@ -1,15 +1,36 @@
-export const FormCard: (props: {
-  name: string;
-  music: boolean;
-  movie: boolean;
-  sex: string;
-}) => JSX.Element = (props: { name: string; music: boolean; movie: boolean; sex: string }) => {
+import { IFormCardData } from '../../models/IFormCardData';
+import styles from './FormCard.module.scss';
+
+interface FormCardProps {
+  formData: IFormCardData | null;
+}
+
+export const FormCard = ({ formData }: FormCardProps) => {
+  if (!formData) {
+    return <></>;
+  }
+
   return (
-    <div>
-      {props.name}
-      {props.music && `music`}
-      {props.movie && `movie`}
-      {props.sex}
-    </div>
+    <>
+      <div className={styles.form_card}>
+        <h3 className={styles.name}>Name: {formData.firstName}</h3>
+        <img className={styles.image} src={formData.imageFile} alt={'your image'} />
+        <div className={styles.description}>
+          <p className={styles.description_param}>Country: {formData.country}</p>
+          <p className={styles.description_param}>Delivery date: {formData.deliveryDate}</p>
+          <div className={styles.description_package}>
+            Package options:{' '}
+            {formData.package.map((item, index) => {
+              return (
+                <p className={styles.package} key={index}>
+                  {item}{' '}
+                </p>
+              );
+            })}
+          </div>
+          <p className={styles.description_param}>Payment type: {formData.payment}</p>
+        </div>
+      </div>
+    </>
   );
 };
