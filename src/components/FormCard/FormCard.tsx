@@ -10,6 +10,13 @@ export const FormCard = ({ formData }: FormCardProps) => {
     return <></>;
   }
 
+  const renderPackage = () =>
+    formData.package.map((item, index) => (
+      <p className={styles.package} key={index}>
+        {item}{' '}
+      </p>
+    ));
+
   return (
     <>
       <div className={styles.form_card}>
@@ -18,16 +25,7 @@ export const FormCard = ({ formData }: FormCardProps) => {
         <div className={styles.description}>
           <p className={styles.description_param}>Country: {formData.country}</p>
           <p className={styles.description_param}>Delivery date: {formData.deliveryDate}</p>
-          <div className={styles.description_package}>
-            Package options:{' '}
-            {formData.package.map((item, index) => {
-              return (
-                <p className={styles.package} key={index}>
-                  {item}{' '}
-                </p>
-              );
-            })}
-          </div>
+          <div className={styles.description_package}>Package options: {renderPackage()}</div>
           <p className={styles.description_param}>Payment type: {formData.payment}</p>
         </div>
       </div>

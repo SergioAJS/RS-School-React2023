@@ -42,6 +42,51 @@ export const Form = ({ handleFormSubmit }: FormProps) => {
     }, 2000);
   };
 
+  const renderCountries = () =>
+    countries.map((country, index) => {
+      return (
+        <option value={country} key={index}>
+          {country}
+        </option>
+      );
+    });
+
+  const renderPackaging = () =>
+    packaging.map((packageType, index) => {
+      return (
+        <div key={index} className={styles.multiselect}>
+          <label htmlFor={packageType} className={styles.label}>
+            {packageType}
+          </label>
+          <input
+            {...register('package', { required: 'Please choose package type' })}
+            type="checkbox"
+            id={packageType}
+            className={styles.input}
+            value={packageType}
+          />
+        </div>
+      );
+    });
+
+  const renderPayments = () =>
+    payments.map((payment, index) => {
+      return (
+        <div key={index} className={styles.multiselect}>
+          <label htmlFor={payment} className={styles.label}>
+            {payment}
+          </label>
+          <input
+            type="radio"
+            id={payment}
+            className={styles.input}
+            value={payment}
+            {...register('payment', { required: 'Please choose payment method' })}
+          />
+        </div>
+      );
+    });
+
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)} onReset={handleReset}>
@@ -101,13 +146,7 @@ export const Form = ({ handleFormSubmit }: FormProps) => {
                 <option value="" hidden>
                   Select Country
                 </option>
-                {countries.map((country, index) => {
-                  return (
-                    <option value={country} key={index}>
-                      {country}
-                    </option>
-                  );
-                })}
+                {renderCountries()}
               </select>
               {errors.country && <p className={styles.error}>{errors.country.message}</p>}
             </div>
@@ -116,47 +155,13 @@ export const Form = ({ handleFormSubmit }: FormProps) => {
           <div className={styles.input_block}>
             <div className={styles.input_instance}>
               <p className={styles.label}>Packaging options</p>
-              <div className={styles.payment}>
-                {packaging.map((packageType, index) => {
-                  return (
-                    <div key={index} className={styles.multiselect}>
-                      <label htmlFor={packageType} className={styles.label}>
-                        {packageType}
-                      </label>
-                      <input
-                        {...register('package', { required: 'Please choose package type' })}
-                        type="checkbox"
-                        id={packageType}
-                        className={styles.input}
-                        value={packageType}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+              <div className={styles.payment}>{renderPackaging()}</div>
               {errors.package && <p className={styles.error}>{errors.package.message}</p>}
             </div>
 
             <div className={styles.input_instance}>
               <p className={styles.label}>Payment</p>
-              <div className={styles.payment}>
-                {payments.map((payment, index) => {
-                  return (
-                    <div key={index} className={styles.multiselect}>
-                      <label htmlFor={payment} className={styles.label}>
-                        {payment}
-                      </label>
-                      <input
-                        type="radio"
-                        id={payment}
-                        className={styles.input}
-                        value={payment}
-                        {...register('payment', { required: 'Please choose payment method' })}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+              <div className={styles.payment}>{renderPayments()}</div>
               {errors.payment && <p className={styles.error}>{errors.payment.message}</p>}
             </div>
 
