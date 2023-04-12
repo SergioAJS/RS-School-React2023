@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CardContext } from '../../context/Context';
+import { CardContext } from '../../coontext/Context';
 import styles from './SearchInput.module.scss';
 
 export const SearchInput: () => JSX.Element = () => {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ICharacter } from '../../models/ICharacter';
-import { CardContext } from '../../context/Context';
+import { CardContext } from '../../coontext/Context';
 import styles from './CharacterCard.module.scss';
 
 export interface CardProps {
