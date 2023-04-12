@@ -4,6 +4,7 @@ import { countries } from '../../models/Countries';
 import styles from './Form.module.scss';
 import { packaging } from '../../models/Packages';
 import { payments } from '../../models/Payments';
+import { useState } from 'react';
 
 export const Form = () => {
   const {
@@ -13,14 +14,29 @@ export const Form = () => {
     reset,
   } = useForm<FormData>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+
   const onSubmit = (data: FormData) => {
     console.log(data);
-    // reset();
+    reset();
+  };
+
+  const handleReset = () => {
+    setIsSubmitSuccess(true);
+    setTimeout(() => {
+      setIsSubmitSuccess(false);
+    }, 2000);
   };
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)} onReset={handleReset}>
+        {isSubmitSuccess && (
+          <>
+            <div className={styles.overlay}></div>
+            <h3 className={styles.submitted}>Submitted successfully</h3>
+          </>
+        )}
         <div className={styles.inputs}>
           <div className={styles.input_block}>
             <div className={styles.input_instance}>
