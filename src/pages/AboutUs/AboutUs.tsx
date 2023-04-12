@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Header } from '../components/Header/Header';
-import styles from '../pages/AboutUs.module.scss';
+import { Header } from '../../components/Header/Header';
+import styles from './AboutUs.module.scss';
 
 export const AboutUs: () => JSX.Element = () => {
   return (

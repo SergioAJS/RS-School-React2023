@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { SearchInput } from '../components/SearchInput/SearchInput';
-import { describe, it } from 'vitest';
 
 describe('App', () => {
   it('Search button has "Search" value', () => {

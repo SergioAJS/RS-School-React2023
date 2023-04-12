@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { CardContext } from '../../Context/Context';
-import styles from '../SearchInput/SearchInput.module.scss';
+import { CardContext } from '../../context/Context';
+import styles from './SearchInput.module.scss';
 
 export const SearchInput: () => JSX.Element = () => {
   const { inputValue, onChange, handleSubmit } = useContext(CardContext);

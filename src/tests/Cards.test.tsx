@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Cards } from '../components/Cards/Cards';
 import { vi } from 'vitest';
+import { Cards } from '../components/Cards/Cards';
 import { testCharacter } from '../mock/handlers';
 
 const mockCardClick = vi.fn();

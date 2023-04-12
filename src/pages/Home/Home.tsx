@@ -1,12 +1,12 @@
-import { SearchInput } from '../components/SearchInput/SearchInput';
-import { Header } from '../components/Header/Header';
-import { Cards } from '../components/Cards/Cards';
-import { CardModal } from '../components/Modal/CardModal';
 import { useEffect, useState } from 'react';
-import { CardContext } from '../Context/Context';
-import { ICharacter } from '../models/ICharacter';
-import styles from '../pages/Home.module.scss';
-import { useSearch } from '../hooks/useSearch';
+import { SearchInput } from '../../components/SearchInput/SearchInput';
+import { Header } from '../../components/Header/Header';
+import { Cards } from '../../components/Cards/Cards';
+import { CardModal } from '../../components/Modal/CardModal';
+import { CardContext } from '../../context/Context';
+import { ICharacter } from '../../models/ICharacter';
+import { useSearch } from '../../hooks/useSearch';
+import styles from './Home.module.scss';
 
 export const Home: () => JSX.Element = () => {
   const [characterId, setCharacterId] = useState(0);

@@ -1,8 +1,8 @@
-import { Home } from './pages/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { NotFound } from './pages/NotFound';
-import { AboutUs } from './pages/AboutUs';
-import { FormPage } from './pages/FormPage';
+import { NotFound } from './pages/NotFound/NotFound';
+import { Home } from './pages/Home/Home';
+import { FormPage } from './pages/FormPage/FormPage';
+import { AboutUs } from './pages/AboutUs/AboutUs';
 
 export const App: () => JSX.Element = () => {
   return (
