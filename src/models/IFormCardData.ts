@@ -6,7 +6,7 @@ export interface IFormCardData {
   firstName: string;
   deliveryDate: string;
   country: Countries;
-  package: Packages[];
+  packageOption: Packages[];
   payment: Payments;
   imageFile: string;
 }

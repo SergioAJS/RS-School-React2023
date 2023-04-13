@@ -1,17 +1,22 @@
 import { IFormCardData } from '../../models/IFormCardData';
+import { Packages } from '../../models/Packages';
 import styles from './FormCard.module.scss';
 
 interface FormCardProps {
-  formData: IFormCardData;
+  formData: IFormCardData | null;
 }
 
 export const FormCard = (props: FormCardProps) => {
-  const renderPackage = () =>
-    props.formData.package.map((item, index) => (
+  const renderPackage = (packages: Packages[]) =>
+    packages.map((packageOption: Packages, index) => (
       <p className={styles.package} key={index}>
-        {item}{' '}
+        {packageOption}{' '}
       </p>
     ));
+
+  if (!props.formData) {
+    return null;
+  }
 
   return (
     <>
@@ -21,7 +26,9 @@ export const FormCard = (props: FormCardProps) => {
         <div className={styles.description}>
           <p className={styles.description_param}>Country: {props.formData.country}</p>
           <p className={styles.description_param}>Delivery date: {props.formData.deliveryDate}</p>
-          <div className={styles.description_package}>Package options: {renderPackage()}</div>
+          <div className={styles.description_package}>
+            Package options: {renderPackage(props.formData.packageOption)}
+          </div>
           <p className={styles.description_param}>Payment type: {props.formData.payment}</p>
         </div>
       </div>

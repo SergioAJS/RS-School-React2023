@@ -27,7 +27,7 @@ export const Form = (props: FormProps) => {
         firstName: data.firstName,
         deliveryDate: data.deliveryDate,
         country: data.country,
-        package: data.package,
+        packageOption: data.packageOption,
         payment: data.payment,
         imageFile: URL.createObjectURL(data.imageFile![0]),
       },
@@ -59,7 +59,7 @@ export const Form = (props: FormProps) => {
             {packageType}
           </label>
           <input
-            {...register('package', { required: 'Please choose package type' })}
+            {...register('packageOption', { required: 'Please choose package type' })}
             type="checkbox"
             id={packageType}
             className={styles.input}
@@ -156,7 +156,9 @@ export const Form = (props: FormProps) => {
             <div className={styles.input_instance}>
               <p className={styles.label}>Packaging options</p>
               <div className={styles.payment}>{renderPackaging()}</div>
-              {errors.package && <p className={styles.error}>{errors.package.message}</p>}
+              {errors.packageOption && (
+                <p className={styles.error}>{errors.packageOption.message}</p>
+              )}
             </div>
 
             <div className={styles.input_instance}>

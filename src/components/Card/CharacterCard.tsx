@@ -11,13 +11,13 @@ export interface CardProps {
 export const Card = (props: CardProps) => {
   const { setCharacterId, setModalCharacter } = useContext(CardContext);
 
-  function handleClick() {
+  const handleClick = () => {
     props.onOpen();
     if (setCharacterId) {
       setCharacterId(props.character.id);
       setModalCharacter(props.character);
     }
-  }
+  };
 
   return (
     <div

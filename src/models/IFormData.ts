@@ -6,7 +6,7 @@ export interface IFormData {
   firstName: string;
   deliveryDate: string;
   country: Countries;
-  package: Packages[];
+  packageOption: Packages[];
   payment: Payments;
   imageFile: FileList | null;
 }
