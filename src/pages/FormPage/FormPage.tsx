@@ -5,7 +5,7 @@ import { Header } from '../../components/Header/Header';
 import { IFormCardData } from '../../models/IFormCardData';
 import styles from './FormPage.module.scss';
 
-export const FormPage: () => JSX.Element = () => {
+export const FormPage = () => {
   const [formData, setFormData] = useState<IFormCardData[]>([]);
 
   const handleFormSubmit = (newCard: IFormCardData[]) => {

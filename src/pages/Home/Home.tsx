@@ -8,7 +8,7 @@ import { useSearch } from '../../hooks/useSearch';
 import { ICharacter } from '../../models/ICharacter';
 import styles from './Home.module.scss';
 
-export const Home: () => JSX.Element = () => {
+export const Home = () => {
   const [characterId, setCharacterId] = useState(0);
   const [modal, setModal] = useState(true);
   const [modalCharacter, setModalCharacter] = useState<ICharacter | null>(null);

@@ -10,21 +10,21 @@ interface CardsProps {
   error: string | null;
 }
 
-export const Cards = ({ onOpen, searchCharacters, isLoading, error }: CardsProps) => {
+export const Cards = (props: CardsProps) => {
   const renderCharacters = (searchCharacters: ICharacter[]) => {
     return searchCharacters.map((character: ICharacter) => (
-      <Card character={character} key={character.id} onOpen={onOpen} />
+      <Card character={character} key={character.id} onOpen={props.onOpen} />
     ));
   };
 
-  if (!searchCharacters) {
-    return <>{error && <p className={styles.error}>{error}</p>}</>;
+  if (!props.searchCharacters) {
+    return <>{props.error && <p className={styles.error}>{props.error}</p>}</>;
   }
 
   return (
     <>
-      {isLoading && <Loader />}
-      <ul className={styles.cards}>{renderCharacters(searchCharacters)}</ul>;
+      {props.isLoading && <Loader />}
+      <ul className={styles.cards}>{renderCharacters(props.searchCharacters)}</ul>;
     </>
   );
 };

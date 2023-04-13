@@ -8,25 +8,26 @@ export interface CardProps {
   onOpen: () => void;
 }
 
-export const Card: ({ character, onOpen }: CardProps) => JSX.Element = ({
-  character,
-  onOpen,
-}: CardProps) => {
+export const Card = (props: CardProps) => {
   const { setCharacterId, setModalCharacter } = useContext(CardContext);
 
   function handleClick() {
-    onOpen();
+    props.onOpen();
     if (setCharacterId) {
-      setCharacterId(character.id);
-      setModalCharacter(character);
+      setCharacterId(props.character.id);
+      setModalCharacter(props.character);
     }
   }
 
   return (
-    <div className={styles.card} title={`More info about ${character.name}`} onClick={handleClick}>
-      <h3 className={styles.title}>{character.name}</h3>
-      <img className={styles.image} src={character.image} alt={character.name} />
-      <p>Gender: {character.gender}</p>
+    <div
+      className={styles.card}
+      title={`More info about ${props.character.name}`}
+      onClick={handleClick}
+    >
+      <h3 className={styles.title}>{props.character.name}</h3>
+      <img className={styles.image} src={props.character.image} alt={props.character.name} />
+      <p>Gender: {props.character.gender}</p>
     </div>
   );
 };

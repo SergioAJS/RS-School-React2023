@@ -4,7 +4,7 @@ import { FormPage } from './pages/FormPage/FormPage';
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/NotFound';
 
-export const App: () => JSX.Element = () => {
+export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -15,7 +15,7 @@ export const App: () => JSX.Element = () => {
   );
 };
 
-export const WrappedApp: () => JSX.Element = () => {
+export const WrappedApp = () => {
   return (
     <BrowserRouter>
       <App />

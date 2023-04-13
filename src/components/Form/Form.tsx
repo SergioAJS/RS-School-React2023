@@ -11,7 +11,7 @@ interface FormProps {
   handleFormSubmit: (newCard: IFormCardData[]) => void;
 }
 
-export const Form = ({ handleFormSubmit }: FormProps) => {
+export const Form = (props: FormProps) => {
   const {
     register,
     formState: { errors },
@@ -22,7 +22,7 @@ export const Form = ({ handleFormSubmit }: FormProps) => {
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
 
   const onSubmit = (data: IFormData) => {
-    handleFormSubmit([
+    props.handleFormSubmit([
       {
         firstName: data.firstName,
         deliveryDate: data.deliveryDate,

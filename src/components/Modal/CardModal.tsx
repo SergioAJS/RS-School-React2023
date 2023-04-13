@@ -7,26 +7,36 @@ interface ModalProps {
   modalCharacter: ICharacter | null;
 }
 
-export const CardModal = ({ onClose, modalCharacter }: ModalProps) => {
-  if (!modalCharacter) {
-    return <></>;
+export const CardModal = (props: ModalProps) => {
+  if (!props.modalCharacter) {
+    return null;
   }
 
   return (
     <>
-      <div className={styles.overlay} onClick={onClose}></div>
+      <div className={styles.overlay} onClick={props.onClose}></div>
       <div className={styles.modal}>
-        <img className={styles.close} src={closeIcon} alt="close" title="Close" onClick={onClose} />
-        <h3 className={styles.name}>{modalCharacter.name}</h3>
-        <img className={styles.image} src={modalCharacter.image} alt={modalCharacter.name} />
+        <img
+          className={styles.close}
+          src={closeIcon}
+          alt="close"
+          title="Close"
+          onClick={props.onClose}
+        />
+        <h3 className={styles.name}>{props.modalCharacter.name}</h3>
+        <img
+          className={styles.image}
+          src={props.modalCharacter.image}
+          alt={props.modalCharacter.name}
+        />
         <div className={styles.description}>
-          <p className={styles.description_param}>ID: {modalCharacter.id}</p>
-          <p className={styles.description_param}>Status: {modalCharacter.status}</p>
-          <p className={styles.description_param}>Species: {modalCharacter.species}</p>
-          <p className={styles.description_param}>Type: {modalCharacter.type}</p>
-          <p className={styles.description_param}>Gender: {modalCharacter.gender}</p>
-          <p className={styles.description_param}>Origin: {modalCharacter.origin.name}</p>
-          <p className={styles.description_param}>Location: {modalCharacter.location.name}</p>
+          <p className={styles.description_param}>ID: {props.modalCharacter.id}</p>
+          <p className={styles.description_param}>Status: {props.modalCharacter.status}</p>
+          <p className={styles.description_param}>Species: {props.modalCharacter.species}</p>
+          <p className={styles.description_param}>Type: {props.modalCharacter.type}</p>
+          <p className={styles.description_param}>Gender: {props.modalCharacter.gender}</p>
+          <p className={styles.description_param}>Origin: {props.modalCharacter.origin.name}</p>
+          <p className={styles.description_param}>Location: {props.modalCharacter.location.name}</p>
         </div>
       </div>
     </>
