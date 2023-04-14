@@ -5,11 +5,3 @@ export enum Countries {
   Uzbekistan = 'Uzbekistan',
   Belarus = 'Belarus',
 }
-
-export const countries: Countries[] = [
-  Countries.Ukraine,
-  Countries.Poland,
-  Countries.Georgia,
-  Countries.Uzbekistan,
-  Countries.Belarus,
-];

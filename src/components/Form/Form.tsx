@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { countries } from '../../models/Countries';
+import { Countries } from '../../models/Countries';
 import { IFormCardData } from '../../models/IFormCardData';
 import { IFormData } from '../../models/IFormData';
-import { packaging } from '../../models/Packages';
-import { payments } from '../../models/Payments';
+import { Packages } from '../../models/Packages';
+import { Payments } from '../../models/Payments';
+import { enumToArray } from '../../utils/enumToArray';
 import styles from './Form.module.scss';
 
 interface FormProps {
@@ -43,7 +44,7 @@ export const Form = (props: FormProps) => {
   };
 
   const renderCountries = () =>
-    countries.map((country, index) => {
+    enumToArray(Countries).map((country, index) => {
       return (
         <option value={country} key={index}>
           {country}
@@ -52,7 +53,7 @@ export const Form = (props: FormProps) => {
     });
 
   const renderPackaging = () =>
-    packaging.map((packageType, index) => {
+    enumToArray(Packages).map((packageType, index) => {
       return (
         <div key={index} className={styles.multiselect}>
           <label htmlFor={packageType} className={styles.label}>
@@ -70,7 +71,7 @@ export const Form = (props: FormProps) => {
     });
 
   const renderPayments = () =>
-    payments.map((payment, index) => {
+    enumToArray(Payments).map((payment, index) => {
       return (
         <div key={index} className={styles.multiselect}>
           <label htmlFor={payment} className={styles.label}>

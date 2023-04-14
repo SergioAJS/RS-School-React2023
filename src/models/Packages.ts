@@ -3,5 +3,3 @@ export enum Packages {
   Rugged = 'Rugged packaging',
   Fragile = 'Fragile cargo',
 }
-
-export const packaging: Packages[] = [Packages.Regular, Packages.Rugged, Packages.Fragile];
