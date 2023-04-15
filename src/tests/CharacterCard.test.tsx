@@ -4,6 +4,8 @@ import { CharacterCard } from '../components/CharacterCard/CharacterCard';
 import { Gender } from '../models/Gender';
 import { ICharacter } from '../models/ICharacter';
 import { Status } from '../models/Status';
+import { Provider } from 'react-redux';
+import { store } from '../redux';
 
 const testCharacter: ICharacter = {
   id: 1,
@@ -31,9 +33,13 @@ const testCharacter: ICharacter = {
 };
 const mockCardClick = vi.fn();
 
-describe('Card component', () => {
-  it('Renders card', () => {
-    render(<CharacterCard character={testCharacter} onOpen={mockCardClick} />);
+describe('CharacterCard component', () => {
+  it('Renders CharacterCard', () => {
+    render(
+      <Provider store={store}>
+        <CharacterCard character={testCharacter} onOpen={mockCardClick} />
+      </Provider>
+    );
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Rick Sanchez');
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByText(/Gender/i)).toHaveTextContent('Gender: Male');

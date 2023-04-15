@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import { CardContext } from '../../context/Context';
+import { useAppDispatch } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
+import { setCharacterId } from '../../redux/searchCharacterSlice';
 import styles from './CharacterCard.module.scss';
 
 export interface CardProps {
@@ -9,12 +9,12 @@ export interface CardProps {
 }
 
 export const CharacterCard = (props: CardProps) => {
-  const { setCharacterId } = useContext(CardContext);
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
     props.onOpen();
     if (setCharacterId) {
-      setCharacterId(props.character.id);
+      dispatch(setCharacterId(props.character.id));
     }
   };
 

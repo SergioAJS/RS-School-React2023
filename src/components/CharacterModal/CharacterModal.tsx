@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../hooks/hooks';
 import { useGetCharacterByIdQuery } from '../../redux/API/charactersApi';
 import closeIcon from '../../resources/close.svg';
 import { Loader } from '../Loader/Loader';
@@ -5,11 +6,11 @@ import styles from './CharacterModal.module.scss';
 
 interface ModalProps {
   onClose: () => void;
-  characterId: number | null;
 }
 
 export const CardModal = (props: ModalProps) => {
-  const { data, isFetching } = useGetCharacterByIdQuery(props.characterId);
+  const characterId = useAppSelector((store) => store.searchCharacter.characterId);
+  const { data, isFetching } = useGetCharacterByIdQuery(characterId);
 
   return (
     <>

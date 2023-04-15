@@ -7,7 +7,6 @@ import styles from './CharacterCards.module.scss';
 
 interface CardsProps {
   onOpen: () => void;
-  // searchValue: string | null;
 }
 
 export const Cards = (props: CardsProps) => {
