@@ -1,8 +1,8 @@
+import { Provider } from 'react-redux';
 import { vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Cards } from '../components/CharacterCards/CharacterCards';
 import { testCharacter } from '../mock/handlers';
-import { Provider } from 'react-redux';
 import { store } from '../redux';
 
 const mockCardClick = vi.fn();

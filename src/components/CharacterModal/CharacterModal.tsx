@@ -1,4 +1,4 @@
-import { useGetCharacterByIdQuery } from '../../redux/charactersApi';
+import { useGetCharacterByIdQuery } from '../../redux/API/charactersApi';
 import closeIcon from '../../resources/close.svg';
 import { Loader } from '../Loader/Loader';
 import styles from './CharacterModal.module.scss';
@@ -9,14 +9,14 @@ interface ModalProps {
 }
 
 export const CardModal = (props: ModalProps) => {
-  const { data, isLoading } = useGetCharacterByIdQuery(props.characterId);
+  const { data, isFetching } = useGetCharacterByIdQuery(props.characterId);
 
   return (
     <>
       <div className={styles.overlay} onClick={props.onClose}></div>
       <div className={styles.modal}>
-        {isLoading && <Loader />}
-        {!isLoading && (
+        {isFetching && <Loader />}
+        {!isFetching && (
           <>
             <img
               className={styles.close}

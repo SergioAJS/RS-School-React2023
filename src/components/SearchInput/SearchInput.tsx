@@ -1,9 +1,26 @@
-import { useContext } from 'react';
-import { CardContext } from '../../context/Context';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { setInputValue, setSearchValue } from '../../redux/searchCharacterSlice';
 import styles from './SearchInput.module.scss';
 
 export const SearchInput = () => {
-  const { inputValue, onChange, handleSubmit } = useContext(CardContext);
+  const dispatch = useAppDispatch();
+  const inputValue = useAppSelector((state) => state.searchCharacter.inputValue);
+
+  const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
+    const input = event.currentTarget;
+    const value = input.value;
+    dispatch(setInputValue(value));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(setSearchValue(inputValue));
+  };
+
+  useEffect(() => {
+    dispatch(setInputValue(inputValue));
+  }, [dispatch, inputValue]);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

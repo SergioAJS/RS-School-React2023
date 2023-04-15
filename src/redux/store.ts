@@ -1,16 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { charactersApi } from './charactersApi';
-// import todoReducer from './todoSlice';
+import { charactersApi } from './API/charactersApi';
+import searchCharacterSlice from './searchCharacterSlice';
 
 export const store = configureStore({
   reducer: {
-    // todos: todoReducer,
     [charactersApi.reducerPath]: charactersApi.reducer,
+    searchCharacter: searchCharacterSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(charactersApi.middleware),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {todos: TodosState}
+
 export type AppDispatch = typeof store.dispatch;

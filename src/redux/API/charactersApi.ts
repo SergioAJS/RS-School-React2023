@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICharacters } from '../models/ICharacters';
-import { ICharacter } from '../models/ICharacter';
+import { ICharacter } from '../../models/ICharacter';
+import { ICharacters } from '../../models/ICharacters';
 
 type CharactersResponse = ICharacters;
 type CharacterResponse = ICharacter;
@@ -24,13 +24,6 @@ export const charactersApi = createApi({
     }),
     getCharacterById: builder.query<CharacterResponse, number | null>({
       query: (id) => `/character${id && `/${id}`}`,
-      // providesTags: (result) =>
-      // result
-      //   ? [
-      //       ...result.map(({ id }) => ({ type: 'Characters' as const, id })),
-      //       { type: 'Characters', id: 'LIST' },
-      //     ]
-      //   : [{ type: 'Characters', id: 'LIST' }],
     }),
   }),
 });

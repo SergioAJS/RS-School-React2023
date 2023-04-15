@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
 import { useGetCharactersQuery } from '../../redux';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
@@ -6,11 +7,12 @@ import styles from './CharacterCards.module.scss';
 
 interface CardsProps {
   onOpen: () => void;
-  searchValue: string | null;
+  // searchValue: string | null;
 }
 
 export const Cards = (props: CardsProps) => {
-  const { data, isError, error, isLoading } = useGetCharactersQuery(props.searchValue);
+  const searchValue = useAppSelector((state) => state.searchCharacter.searchValue);
+  const { data, isError, error, isFetching } = useGetCharactersQuery(searchValue);
 
   const renderCharacters = (characters: ICharacter[] | undefined) => {
     if (characters)
@@ -25,7 +27,7 @@ export const Cards = (props: CardsProps) => {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isFetching && <Loader />}
       <ul className={styles.cards}>{renderCharacters(data?.results)}</ul>;
     </>
   );
