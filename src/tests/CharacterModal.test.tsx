@@ -37,7 +37,7 @@ describe('Card modal', () => {
   it('Renders card modal', () => {
     render(
       <Provider store={store}>
-        <CardModal onClose={mockModalClick} characterId={1} />
+        <CardModal onClose={mockModalClick} />
       </Provider>
     );
     // expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Rick Sanchez');

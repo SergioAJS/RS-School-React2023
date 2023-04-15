@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { render, screen } from '@testing-library/react';
 import { SearchInput } from '../components/SearchInput/SearchInput';
 import { store } from '../redux';
 

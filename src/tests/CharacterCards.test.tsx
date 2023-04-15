@@ -11,7 +11,7 @@ describe('Cards component', () => {
   it('Renders list of cards', () => {
     render(
       <Provider store={store}>
-        <Cards onOpen={mockCardClick} searchValue={'rick'} />
+        <Cards onOpen={mockCardClick} />
       </Provider>
     );
     expect(screen.getByAltText('loading')).toBeInTheDocument();
