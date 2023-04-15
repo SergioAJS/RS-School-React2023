@@ -8,14 +8,13 @@ export interface CardProps {
   onOpen: () => void;
 }
 
-export const Card = (props: CardProps) => {
-  const { setCharacterId, setModalCharacter } = useContext(CardContext);
+export const CharacterCard = (props: CardProps) => {
+  const { setCharacterId } = useContext(CardContext);
 
   const handleClick = () => {
     props.onOpen();
     if (setCharacterId) {
       setCharacterId(props.character.id);
-      setModalCharacter(props.character);
     }
   };
 

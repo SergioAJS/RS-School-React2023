@@ -12,7 +12,7 @@ export const charactersApi = createApi({
     baseUrl: 'https://rickandmortyapi.com/api',
   }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<CharactersResponse, string>({
+    getCharacters: builder.query<CharactersResponse, string | null>({
       query: (name = '') => `/character${name && `/?name=${name}`}`,
       providesTags: (result) =>
         result
@@ -22,7 +22,7 @@ export const charactersApi = createApi({
             ]
           : [{ type: 'Characters', id: 'LIST' }],
     }),
-    getCharacterById: builder.query<CharacterResponse, number>({
+    getCharacterById: builder.query<CharacterResponse, number | null>({
       query: (id) => `/character${id && `/${id}`}`,
       // providesTags: (result) =>
       // result
@@ -32,22 +32,6 @@ export const charactersApi = createApi({
       //     ]
       //   : [{ type: 'Characters', id: 'LIST' }],
     }),
-
-    // addProduct: build.mutation({
-    //   query: (body) => ({
-    //     url: 'goods',
-    //     method: 'POST',
-    //     body,
-    //   }),
-    //   invalidatesTags: [{ type: 'Characters', id: 'LIST' }],
-    // }),
-    // deleteProduct: build.mutation({
-    //   query: (id) => ({
-    //     url: `goods/${id}`,
-    //     method: 'DELETE',
-    //   }),
-    //   invalidatesTags: [{ type: 'Characters', id: 'LIST' }],
-    // }),
   }),
 });
 

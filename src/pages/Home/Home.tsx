@@ -4,21 +4,18 @@ import { Header } from '../../components/Header/Header';
 import { CardModal } from '../../components/Modal/CardModal';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { CardContext } from '../../context/Context';
-import { useSearch } from '../../hooks/useSearch';
-import { ICharacter } from '../../models/ICharacter';
 import styles from './Home.module.scss';
 
 export const Home = () => {
-  const [characterId, setCharacterId] = useState(0);
-  const [modal, setModal] = useState(true);
-  const [modalCharacter, setModalCharacter] = useState<ICharacter | null>(null);
+  const [characterId, setCharacterId] = useState<number | null>(null);
+  const [modal, setModal] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [search, setSearch] = useState<string | null>(localStorage.getItem('inputValue'));
-  const { searchCharacters, isLoading, error } = useSearch(search);
+  const [searchValue, setSearchValue] = useState<string | null>(localStorage.getItem('inputValue'));
 
   const modalClose = () => {
     setModal(false);
   };
+
   const modalOpen = () => {
     setModal(true);
   };
@@ -33,14 +30,14 @@ export const Home = () => {
     const inputValue = localStorage.getItem('inputValue');
     if (inputValue) {
       setInputValue(inputValue);
-      setSearch(inputValue);
+      setSearchValue(inputValue);
     }
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     localStorage.setItem('inputValue', inputValue);
-    setSearch(inputValue);
+    setSearchValue(inputValue);
   };
 
   return (
@@ -51,20 +48,14 @@ export const Home = () => {
         inputValue,
         onChange,
         handleSubmit,
-        search,
-        setModalCharacter,
+        searchValue,
       }}
     >
       <div className={styles.home}>
         <Header />
         <SearchInput />
-        <Cards
-          onOpen={modalOpen}
-          // searchCharacters={searchCharacters}
-          // isLoading={isLoading}
-          error={error}
-        />
-        {modal && <CardModal onClose={modalClose} modalCharacter={modalCharacter} />}
+        <Cards onOpen={modalOpen} searchValue={searchValue} />
+        {modal && <CardModal onClose={modalClose} characterId={characterId} />}
       </div>
     </CardContext.Provider>
   );
