@@ -60,8 +60,8 @@ export const Home = () => {
         <SearchInput />
         <Cards
           onOpen={modalOpen}
-          searchCharacters={searchCharacters}
-          isLoading={isLoading}
+          // searchCharacters={searchCharacters}
+          // isLoading={isLoading}
           error={error}
         />
         {modal && <CardModal onClose={modalClose} modalCharacter={modalCharacter} />}
