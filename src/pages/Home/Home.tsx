@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Cards } from '../../components/Cards/Cards';
+import { Cards } from '../../components/CharacterCards/CharacterCards';
 import { Header } from '../../components/Header/Header';
-import { CardModal } from '../../components/Modal/CardModal';
+import { CardModal } from '../../components/CharacterModal/CharacterModal';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { CardContext } from '../../context/Context';
 import styles from './Home.module.scss';

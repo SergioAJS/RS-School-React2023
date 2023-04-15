@@ -1,8 +1,8 @@
 import { ICharacter } from '../../models/ICharacter';
 import { useGetCharactersQuery } from '../../redux';
-import { CharacterCard } from '../Card/CharacterCard';
+import { CharacterCard } from '../CharacterCard/CharacterCard';
 import { Loader } from '../Loader/Loader';
-import styles from './Cards.module.scss';
+import styles from './CharacterCards.module.scss';
 
 interface CardsProps {
   onOpen: () => void;

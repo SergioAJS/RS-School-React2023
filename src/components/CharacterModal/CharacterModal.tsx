@@ -1,7 +1,7 @@
 import { useGetCharacterByIdQuery } from '../../redux/charactersApi';
 import closeIcon from '../../resources/close.svg';
 import { Loader } from '../Loader/Loader';
-import styles from './CardModal.module.scss';
+import styles from './CharacterModal.module.scss';
 
 interface ModalProps {
   onClose: () => void;

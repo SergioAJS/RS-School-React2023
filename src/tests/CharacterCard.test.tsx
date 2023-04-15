@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Card } from '../components/Card/CharacterCard';
+import { CharacterCard } from '../components/CharacterCard/CharacterCard';
 import { Gender } from '../models/Gender';
 import { ICharacter } from '../models/ICharacter';
 import { Status } from '../models/Status';
@@ -33,7 +33,7 @@ const mockCardClick = vi.fn();
 
 describe('Card component', () => {
   it('Renders card', () => {
-    render(<Card character={testCharacter} onOpen={mockCardClick} />);
+    render(<CharacterCard character={testCharacter} onOpen={mockCardClick} />);
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Rick Sanchez');
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByText(/Gender/i)).toHaveTextContent('Gender: Male');
