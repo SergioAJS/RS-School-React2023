@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
-import { setCharacterId } from '../../redux/searchCharacterSlice';
+import { setCharacterId } from '../../redux/slices/searchCharacterSlice';
 import styles from './CharacterCard.module.scss';
 
 export interface CardProps {

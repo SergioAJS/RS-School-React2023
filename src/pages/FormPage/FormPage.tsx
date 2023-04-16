@@ -1,15 +1,17 @@
-import { useState } from 'react';
 import { Form } from '../../components/Form/Form';
 import { FormCard } from '../../components/FormCard/FormCard';
 import { Header } from '../../components/Header/Header';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { IFormCardData } from '../../models/IFormCardData';
+import { addNewCard } from '../../redux/slices/formPageSlice';
 import styles from './FormPage.module.scss';
 
 export const FormPage = () => {
-  const [formData, setFormData] = useState<IFormCardData[]>([]);
+  const dispatch = useAppDispatch();
+  const formCards = useAppSelector((store) => store.formPage.formCards);
 
   const handleFormSubmit = (newCard: IFormCardData[]) => {
-    setFormData([...formData, ...newCard]);
+    dispatch(addNewCard([...formCards, ...newCard]));
   };
 
   return (
@@ -21,7 +23,7 @@ export const FormPage = () => {
         }}
       />
       <div className={styles.user_cards}>
-        {formData.map((item, index) => {
+        {formCards.map((item, index) => {
           return <FormCard formData={item} key={index} />;
         })}
       </div>
