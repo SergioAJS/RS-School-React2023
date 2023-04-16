@@ -1,15 +1,12 @@
 import { Provider } from 'react-redux';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { SearchInput } from '../components/SearchInput/SearchInput';
-import { store } from '../redux';
+import { setupStore } from '../redux';
+import { renderWithProviders } from '../utils/testUtils';
 
 describe('App', () => {
   it('Search button has "Search" value', () => {
-    render(
-      <Provider store={store}>
-        <SearchInput />
-      </Provider>
-    );
+    renderWithProviders(<SearchInput />);
     expect(screen.getByRole('button')).toHaveValue('Search');
 
     const searchInput: HTMLInputElement = screen.getByPlaceholderText(
@@ -21,7 +18,7 @@ describe('App', () => {
   });
   it('Should input values', () => {
     render(
-      <Provider store={store}>
+      <Provider store={setupStore()}>
         <SearchInput />
       </Provider>
     );

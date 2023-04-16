@@ -1,10 +1,11 @@
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { App } from '../App';
+import { renderWithProviders } from '../utils/testUtils';
 
 describe('About Us page', () => {
   it('Renders About Us page', () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/AboutUs']}>
         <App />
       </MemoryRouter>

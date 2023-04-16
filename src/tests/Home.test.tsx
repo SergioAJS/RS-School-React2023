@@ -1,17 +1,14 @@
-import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { App } from '../App';
-import { store } from '../redux';
+import { renderWithProviders } from '../utils/testUtils';
 
 describe('Home page', () => {
   it('Renders Home page', () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      </Provider>
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>
     );
 
     const searchInput: HTMLInputElement = screen.getByPlaceholderText(

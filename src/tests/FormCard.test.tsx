@@ -4,6 +4,7 @@ import { Countries } from '../models/Countries';
 import { IFormCardData } from '../models/IFormCardData';
 import { Packages } from '../models/Packages';
 import { Payments } from '../models/Payments';
+import { renderWithProviders } from '../utils/testUtils';
 
 const testFormCard: IFormCardData = {
   firstName: 'Dilshoda',
@@ -16,7 +17,7 @@ const testFormCard: IFormCardData = {
 
 describe('Form Card', () => {
   it('Renders form card', () => {
-    render(<FormCard formData={testFormCard}></FormCard>);
+    renderWithProviders(<FormCard formData={testFormCard}></FormCard>);
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Dilshoda');
   });
   it('Not render form card if formData is null', () => {
