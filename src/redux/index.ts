@@ -1,2 +1,2 @@
-export * from './store';
+export * from './setupStore';
 export * from './API/charactersApi';
