@@ -8,7 +8,7 @@ interface InitialState {
   characterId: number | null;
 }
 
-const initialState: InitialState = {
+export const initialState: InitialState = {
   searchValue: '',
   inputValue: '',
   characterId: null,

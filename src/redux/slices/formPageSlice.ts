@@ -8,7 +8,7 @@ interface IFormPage {
   formCards: IFormCardData[];
 }
 
-const initialState: IFormPage = {
+export const initialState: IFormPage = {
   formCards: [],
 };
 

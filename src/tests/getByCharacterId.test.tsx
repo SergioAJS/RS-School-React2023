@@ -1,6 +1,8 @@
-import { renderHook } from '@testing-library/react';
 import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
+
+import { renderHook } from '@testing-library/react';
+
 import { setupStore, useGetCharacterByIdQuery } from '../redux';
 
 function Wrapper(props: { children: ReactNode }) {
