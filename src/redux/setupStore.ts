@@ -2,7 +2,6 @@ import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolki
 
 import charactersApiReducer, { charactersApi } from './API/charactersApi';
 import characterCardsReducer from './slices/characterCardsSlice';
-import formCardDataReducer from './slices/formCardDataSlice';
 import formPageReducer from './slices/formPageSlice';
 import searchCharacterReducer from './slices/searchCharacterSlice';
 
@@ -11,7 +10,6 @@ const rootReducer = combineReducers({
   [charactersApi.reducerPath]: charactersApiReducer,
   searchCharacter: searchCharacterReducer,
   formPage: formPageReducer,
-  formCard: formCardDataReducer,
   characterCards: characterCardsReducer,
 });
 
