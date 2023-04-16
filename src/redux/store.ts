@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { charactersApi } from './API/charactersApi';
+import characterCardsSlice from './slices/characterCardsSlice';
 import formCardDataSlice from './slices/formCardDataSlice';
 import formPageSlice from './slices/formPageSlice';
 import searchCharacterSlice from './slices/searchCharacterSlice';
-import characterCardsSlice from './slices/characterCardsSlice';
 
 export const store = configureStore({
   reducer: {

@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import { FormCard } from '../components/FormCard/FormCard';
 import { Countries } from '../models/Countries';
 import { IFormCardData } from '../models/IFormCardData';
 import { Packages } from '../models/Packages';
 import { Payments } from '../models/Payments';
-import { FormCard } from '../components/FormCard/FormCard';
 
 const testFormCard: IFormCardData = {
   firstName: 'Dilshoda',

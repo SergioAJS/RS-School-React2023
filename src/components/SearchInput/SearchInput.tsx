@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { setInputValue, setSearchValue } from '../../redux/slices/searchCharacterSlice';
 import styles from './SearchInput.module.scss';

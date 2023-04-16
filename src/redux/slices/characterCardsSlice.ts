@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { ICharacter } from '../../models/ICharacter';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
 interface ICharacterCards {
   characterCards: ICharacter[];
 }

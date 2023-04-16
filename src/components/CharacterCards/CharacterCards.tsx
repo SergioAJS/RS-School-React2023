@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
 import { useGetCharactersQuery } from '../../redux';
