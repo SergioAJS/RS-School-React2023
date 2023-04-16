@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 import { ICharacter } from '../../models/ICharacter';
 import { ICharacters } from '../../models/ICharacters';
 

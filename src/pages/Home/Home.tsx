@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { Cards } from '../../components/CharacterCards/CharacterCards';
 import { CardModal } from '../../components/CharacterModal/CharacterModal';
 import { Header } from '../../components/Header/Header';

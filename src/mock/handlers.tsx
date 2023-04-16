@@ -1,6 +1,10 @@
+import { fetch, Headers, Request, Response } from 'cross-fetch';
 import { rest } from 'msw';
-// import { Gender } from '../models/Gender';
-// import { Status } from '../models/Status';
+
+global.fetch = fetch;
+global.Headers = Headers;
+global.Request = Request;
+global.Response = Response;
 
 const url = 'https://rickandmortyapi.com/api/character';
 
@@ -493,6 +497,6 @@ export const testCharacter = {
 
 export const handlers = [
   rest.get(url, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json([testCharacter.results]), ctx.delay(1000));
+    return res(ctx.status(200), ctx.json(testCharacter), ctx.delay(50));
   }),
 ];

@@ -1,15 +1,16 @@
-import { vi } from 'vitest';
-import { renderHook, screen } from '@testing-library/react';
-import { CharacterCard } from '../components/CharacterCard/CharacterCard';
-// import { testCharacter } from '../mock/handlers';
-import { renderWithProviders } from '../utils/testUtils';
-import { Gender } from '../models/Gender';
-import { Status } from '../models/Status';
-import { ICharacter } from '../models/ICharacter';
-import { useAppDispatch } from '../hooks/hooks';
-import { Provider } from 'react-redux';
 import { ReactNode } from 'react';
+import { Provider } from 'react-redux';
+import { vi } from 'vitest';
+
+import { renderHook, screen } from '@testing-library/react';
+
+import { CharacterCard } from '../components/CharacterCard/CharacterCard';
+import { useAppDispatch } from '../hooks/hooks';
+import { Gender } from '../models/Gender';
+import { ICharacter } from '../models/ICharacter';
+import { Status } from '../models/Status';
 import { setupStore } from '../redux';
+import { renderWithProviders } from '../utils/testUtils';
 
 const testCharacter: ICharacter = {
   id: 1,

@@ -1,6 +1,6 @@
-import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
-import { charactersApi } from './API/charactersApi';
-import charactersApiReducer from './API/charactersApi';
+import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
+
+import charactersApiReducer, { charactersApi } from './API/charactersApi';
 import characterCardsReducer from './slices/characterCardsSlice';
 import formCardDataReducer from './slices/formCardDataSlice';
 import formPageReducer from './slices/formPageSlice';

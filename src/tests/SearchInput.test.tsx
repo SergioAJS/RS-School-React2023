@@ -1,5 +1,7 @@
 import { Provider } from 'react-redux';
+
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import { SearchInput } from '../components/SearchInput/SearchInput';
 import { setupStore } from '../redux';
 import { renderWithProviders } from '../utils/testUtils';
