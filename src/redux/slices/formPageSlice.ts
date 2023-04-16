@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IFormCardData } from '../../models/IFormCardData';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
+
 interface IFormPage {
   formCards: IFormCardData[];
 }

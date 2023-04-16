@@ -1,6 +1,8 @@
-import { useAppSelector } from '../../hooks/hooks';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
 import { useGetCharactersQuery } from '../../redux';
+import { setCharacterCards } from '../../redux/slices/characterCardsSlice';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
 import { Loader } from '../Loader/Loader';
 import styles from './CharacterCards.module.scss';
@@ -10,8 +12,16 @@ interface CardsProps {
 }
 
 export const Cards = (props: CardsProps) => {
+  const dispatch = useAppDispatch();
+  const characterCards = useAppSelector((state) => state.characterCards.characterCards);
   const searchValue = useAppSelector((state) => state.searchCharacter.searchValue);
   const { data, isError, error, isFetching } = useGetCharactersQuery(searchValue);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setCharacterCards(data.results));
+    }
+  }, [data, dispatch]);
 
   const renderCharacters = (characters: ICharacter[] | undefined) => {
     if (characters)
@@ -27,7 +37,7 @@ export const Cards = (props: CardsProps) => {
   return (
     <>
       {isFetching && <Loader />}
-      <ul className={styles.cards}>{renderCharacters(data?.results)}</ul>;
+      <ul className={styles.cards}>{renderCharacters(characterCards)}</ul>;
     </>
   );
 };
