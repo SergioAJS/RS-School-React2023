@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 
 import { App } from '../App';
-import { renderWithProviders } from '../utils/testUtils';
+import { renderWithProviders } from '../utils/TestUtils';
 
 describe('App', () => {
   it('Renders not found if invalid path', () => {

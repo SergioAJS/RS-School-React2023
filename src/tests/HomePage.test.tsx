@@ -5,7 +5,7 @@ import { fireEvent, screen } from '@testing-library/react';
 
 import { App } from '../App';
 import server from '../mock/testServer';
-import { renderWithProviders } from '../utils/testUtils';
+import { renderWithProviders } from '../utils/TestUtils';
 
 describe('Home page', () => {
   it('fetches & receives name Rick Sanchez after clicking the search user button', async () => {

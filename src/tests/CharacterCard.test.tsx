@@ -10,7 +10,7 @@ import { Gender } from '../models/Gender';
 import { ICharacter } from '../models/ICharacter';
 import { Status } from '../models/Status';
 import { setupStore } from '../redux';
-import { renderWithProviders } from '../utils/testUtils';
+import { renderWithProviders } from '../utils/TestUtils';
 
 const testCharacter: ICharacter = {
   id: 1,

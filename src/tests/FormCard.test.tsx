@@ -5,7 +5,7 @@ import { Countries } from '../models/Countries';
 import { IFormCardData } from '../models/IFormCardData';
 import { Packages } from '../models/Packages';
 import { Payments } from '../models/Payments';
-import { renderWithProviders } from '../utils/testUtils';
+import { renderWithProviders } from '../utils/TestUtils';
 
 const testFormCard: IFormCardData = {
   firstName: 'Dilshoda',

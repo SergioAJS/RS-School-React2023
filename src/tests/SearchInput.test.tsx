@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { SearchInput } from '../components/SearchInput/SearchInput';
 import { setupStore } from '../redux';
-import { renderWithProviders } from '../utils/testUtils';
+import { renderWithProviders } from '../utils/TestUtils';
 
 describe('App', () => {
   it('Search button has "Search" value', () => {

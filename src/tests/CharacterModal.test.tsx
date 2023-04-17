@@ -3,7 +3,7 @@ import { vi } from 'vitest';
 import { screen } from '@testing-library/react';
 
 import { CardModal } from '../components/CharacterModal/CharacterModal';
-import { renderWithProviders } from '../utils/testUtils';
+import { renderWithProviders } from '../utils/TestUtils';
 
 const mockModalClick = vi.fn();
 
