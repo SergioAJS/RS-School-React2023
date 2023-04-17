@@ -25,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: install packages
-        run: npm ci
+        run: npm install
         
       - name: vitest
         run: npm run vitest
