@@ -38,7 +38,7 @@ export const Cards = (props: CardsProps) => {
   return (
     <>
       {isFetching && <Loader />}
-      <ul className={styles.cards}>{renderCharacters(characterCards)}</ul>;
+      <ul className={styles.cards}>{renderCharacters(characterCards)}</ul>
     </>
   );
 };
