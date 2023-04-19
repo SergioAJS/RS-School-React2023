@@ -1,0 +1,52 @@
+.form_card {
+  width: 400px;
+  min-height: 500px;
+  background-color: white;
+  border: 1px solid pink;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(105, 102, 99);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: flex-start;
+  align-items: center;
+
+  .name {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .image {
+    width: 250px;
+    height: 250px;
+    align-self: center;
+    object-fit: cover;
+  }
+
+  .description {
+    padding: 0;
+    margin: 0;
+
+    .description_param {
+      margin: 5px 0;
+      border-bottom: 1px solid yellow;
+    }
+
+    .description_package {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border-bottom: 1px solid yellow;
+      padding-bottom: 5px;
+
+      .package {
+        margin: 0;
+        padding-left: 10px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

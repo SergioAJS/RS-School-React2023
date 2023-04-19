@@ -1,0 +1,10 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.error {
+  display: flex;
+  align-self: center;
+}
