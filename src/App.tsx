@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { AboutUs } from './pages/AboutUs/AboutUs';
 import { FormPage } from './pages/FormPage/FormPage';
@@ -13,13 +13,5 @@ export const App = () => {
       <Route path="/AboutUs" element={<AboutUs />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  );
-};
-
-export const WrappedApp = () => {
-  return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
   );
 };

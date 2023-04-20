@@ -1,16 +1,18 @@
 import './index.scss';
-
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-
-import { WrappedApp } from './App';
+import { App } from './App';
 import { setupStore } from './redux';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.hydrateRoot(
+  document.getElementById('root') as HTMLElement,
   <StrictMode>
     <Provider store={setupStore()}>
-      <WrappedApp />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </StrictMode>
 );
