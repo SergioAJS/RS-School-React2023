@@ -16,11 +16,10 @@
     "noImplicitAny": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["node_modules", "src/tests", "src/setup.ts"],
+  "exclude": ["node_modules"],
   "ts-node": {
     "esm": true
   }

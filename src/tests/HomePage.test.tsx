@@ -1,5 +1,4 @@
 import { rest } from 'msw';
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { fireEvent, screen } from '@testing-library/react';
