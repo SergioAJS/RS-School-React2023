@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { vi } from 'vitest';
 
