@@ -1,52 +1,51 @@
 import express from 'express';
-import { readFile } from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { createServer as createViteServer } from 'vite';
+import serveStatic from 'serve-static';
+import url from 'url';
+import { resolve } from 'path';
+import { ViteDevServer, createServer as createViteServer } from 'vite';
 
+let vite: ViteDevServer;
 const port = process.env.PORT || 8080;
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const isProd = process.env.NODE_ENV === 'production';
 
 const createServer = async () => {
   const app = express();
 
-  const vite = await createViteServer({
-    server: { middlewareMode: true },
-    appType: 'custom',
-  });
+  if (!isProd) {
+    vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: 'custom',
+    });
 
-  app.use(vite.middlewares);
+    app.use(vite.middlewares);
+  } else {
+    app.use(serveStatic('./dist/client', { index: false }));
+  }
 
   app.use('*', async (req, res, next) => {
-    const url = req.originalUrl;
+    const urlOrig = req.originalUrl;
+    let handleRender;
 
     try {
-      const template = await readFile(path.resolve(__dirname, 'index.html'), 'utf-8');
-      const transformedTemplate = await vite.transformIndexHtml(url, template);
-      const parts = transformedTemplate.split('<!--app-html-->');
-      const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
+      if (!isProd) {
+        handleRender = await (await vite.ssrLoadModule('/src/entry-server.tsx')).handleRender;
+      } else {
+        handleRender = (
+          await import(url.pathToFileURL(resolve('./dist/server/entry-server.js')).href)
+        ).handleRender;
+      }
 
-      const { pipe } = await render(url, {
-        onShellReady() {
-          res.write(parts[0]);
-          pipe(res);
-        },
-        omShellError(error: unknown) {
-          const err = error as Error;
-          console.error(err);
-        },
-        onAllReady() {
-          res.write(parts[1]);
-          res.end();
-        },
-        onError(err: Error) {
-          console.error(err);
-        },
-      });
+      await handleRender(urlOrig, res);
     } catch (error) {
       const err = error as Error;
-      vite.ssrFixStacktrace(err);
-      next(err);
+
+      if (!isProd) {
+        vite.ssrFixStacktrace(err);
+        next(err);
+      } else {
+        console.log(err.message);
+        res.status(500).end(err);
+      }
     }
   });
 

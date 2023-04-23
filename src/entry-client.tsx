@@ -8,9 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import { setupStoreThunks } from './redux';
 
-const preloadedState = window.__PRELOADED_STATE__;
+const store = setupStoreThunks(window.__PRELOADED_STATE__);
 
-const store = setupStoreThunks(preloadedState);
 delete window.__PRELOADED_STATE__;
 
 ReactDOM.hydrateRoot(

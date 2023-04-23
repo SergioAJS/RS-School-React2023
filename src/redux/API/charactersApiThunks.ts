@@ -1,6 +1,10 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit/dist/index';
 
 import { ICharacter } from '../../models/ICharacter';
+
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { createAsyncThunk } = ((toolkitRaw as TypeToolkitRaw).default ??
+  toolkitRaw) as typeof toolkitRaw;
 
 export const fetchCharacters = createAsyncThunk<ICharacter[], string, { rejectValue: string }>(
   'characterCards/fetchCharacters',

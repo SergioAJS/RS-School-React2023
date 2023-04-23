@@ -1,7 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit/dist/index';
 
 import { ICharacterCards } from '../../models/ICharacterApiThunks';
 import { fetchCharacter, fetchCharacters } from '../API/charactersApiThunks';
+
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { createSlice } = ((toolkitRaw as TypeToolkitRaw).default ?? toolkitRaw) as typeof toolkitRaw;
 
 const initialState: ICharacterCards = {
   characterCards: [],

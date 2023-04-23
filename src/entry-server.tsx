@@ -1,13 +1,15 @@
+import { Response } from 'express';
 import React from 'react';
-import ReactDOMServer, { RenderToPipeableStreamOptions } from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom/server';
 
 import { App } from './App';
 import { setupStoreThunks } from './redux';
 import { fetchCharacters } from './redux/API/charactersApiThunks';
+import { RenderFullPage } from './RenderFullPage';
 
-export async function render(url: string, opts: RenderToPipeableStreamOptions) {
+export async function handleRender(url: string, res: Response) {
   const store = setupStoreThunks();
 
   await store.dispatch(fetchCharacters(''));
@@ -16,18 +18,24 @@ export async function render(url: string, opts: RenderToPipeableStreamOptions) {
 
   const stream = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
-      <Provider store={store}>
-        <StaticRouter location={url}>
-          <App />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.__PRELOADED_STATE__ =${preloadedState}`,
-            }}
-          ></script>
-        </StaticRouter>
-      </Provider>
+      <RenderFullPage
+        html={
+          <Provider store={store}>
+            <StaticRouter location={url}>
+              <App />
+            </StaticRouter>
+          </Provider>
+        }
+        preloadedState={preloadedState}
+      />
     </React.StrictMode>,
-    opts
+    {
+      onShellReady() {
+        stream.pipe(res);
+      },
+      onAllReady() {
+        res.end();
+      },
+    }
   );
-  return stream;
 }

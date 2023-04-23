@@ -5,7 +5,7 @@ import { vi } from 'vitest';
 import { renderHook, screen } from '@testing-library/react';
 
 import { CharacterCard } from '../components/CharacterCard/CharacterCard';
-import { useAppDispatchRTKQuery } from '../hooks/hooks';
+import { useAppDispatchThunks } from '../hooks/hooks';
 import { Gender } from '../models/Gender';
 import { ICharacter } from '../models/ICharacter';
 import { Status } from '../models/Status';
@@ -48,6 +48,6 @@ describe('CharacterCard component', () => {
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Rick Sanchez');
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByText(/Gender/i)).toHaveTextContent('Gender: Male');
-    renderHook(() => useAppDispatchRTKQuery(), { wrapper: Wrapper });
+    renderHook(() => useAppDispatchThunks(), { wrapper: Wrapper });
   });
 });
