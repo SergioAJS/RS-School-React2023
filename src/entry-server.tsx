@@ -5,36 +5,14 @@ import { StaticRouter } from 'react-router-dom/server';
 
 import { App } from './App';
 import { setupStoreThunks } from './redux';
-import { ICharacter } from './models/ICharacter';
-import { ICharacters } from './models/ICharacters';
+import { fetchCharacters } from './redux/API/charactersApiThunks';
 
 export async function render(url: string, opts: RenderToPipeableStreamOptions) {
-  async function fetchCards() {
-    try {
-      const apiResponse = await fetch('https://rickandmortyapi.com/api/character');
-      const response: ICharacters = await apiResponse.json();
-      const cards: ICharacter[] = response.results;
-      return cards;
-    } catch (error) {}
-  }
+  const store = setupStoreThunks();
 
-  const initialCards: ICharacter[] | undefined = await fetchCards().then((data) => data);
-  let initCharCards;
+  await store.dispatch(fetchCharacters(''));
 
-  if (initialCards) {
-    initCharCards = {
-      characterCards: initialCards,
-      isLoadingChars: false,
-      errorChars: '',
-      character: null,
-      isLoadingChar: false,
-    };
-  }
-
-  const preloadedState = JSON.stringify(
-    setupStoreThunks({ characterCards: initCharCards }).getState()
-  ).replace(/</g, '\\u003c');
-  const store = setupStoreThunks({ characterCards: initCharCards });
+  const preloadedState = JSON.stringify(store.getState()).replace(/</g, '\\u003c');
 
   const stream = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
