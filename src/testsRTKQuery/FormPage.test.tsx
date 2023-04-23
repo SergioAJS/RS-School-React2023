@@ -3,11 +3,11 @@ import { MemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 
 import { App } from '../App';
-import { renderWithProviders } from '../utils/TestUtils';
+import { renderWithProvidersRTKQuery } from '../utils/TestUtilsRTKQuery';
 
 describe('Form page', () => {
   it('Renders Form page', () => {
-    renderWithProviders(
+    renderWithProvidersRTKQuery(
       <MemoryRouter initialEntries={['/Form']}>
         <App />
       </MemoryRouter>

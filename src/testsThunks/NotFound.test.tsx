@@ -3,11 +3,11 @@ import { MemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 
 import { App } from '../App';
-import { renderWithProviders } from '../utils/TestUtils';
+import { renderWithProvidersThunks } from '../utils/TestUtilsThunks';
 
 describe('App', () => {
   it('Renders not found if invalid path', () => {
-    renderWithProviders(
+    renderWithProvidersThunks(
       <MemoryRouter initialEntries={['/this-route-does-not-exist']}>
         <App />
       </MemoryRouter>

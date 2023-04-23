@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatchThunks, useAppSelectorThunks } from '../../hooks/hooks';
 import { setInputValue, setSearchValue } from '../../redux/slices/searchCharacterSlice';
 import styles from './SearchInput.module.scss';
 
 export const SearchInput = () => {
-  const dispatch = useAppDispatch();
-  const inputValue = useAppSelector((state) => state.searchCharacter.inputValue);
+  const dispatch = useAppDispatchThunks();
+  const inputValue = useAppSelectorThunks((state) => state.searchCharacter.inputValue);
 
   const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const input = event.currentTarget;

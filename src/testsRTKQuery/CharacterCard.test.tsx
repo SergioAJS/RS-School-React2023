@@ -5,12 +5,12 @@ import { vi } from 'vitest';
 import { renderHook, screen } from '@testing-library/react';
 
 import { CharacterCard } from '../components/CharacterCard/CharacterCard';
-import { useAppDispatch } from '../hooks/hooks';
+import { useAppDispatchRTKQuery } from '../hooks/hooks';
 import { Gender } from '../models/Gender';
 import { ICharacter } from '../models/ICharacter';
 import { Status } from '../models/Status';
-import { setupStore } from '../redux';
-import { renderWithProviders } from '../utils/TestUtils';
+import { setupStoreRTKQuery } from '../redux';
+import { renderWithProvidersRTKQuery } from '../utils/TestUtilsRTKQuery';
 
 const testCharacter: ICharacter = {
   id: 1,
@@ -39,15 +39,15 @@ const testCharacter: ICharacter = {
 const mockCardClick = vi.fn();
 
 function Wrapper(props: { children: ReactNode }) {
-  return <Provider store={setupStore()}>{props.children}</Provider>;
+  return <Provider store={setupStoreRTKQuery()}>{props.children}</Provider>;
 }
 
 describe('CharacterCard component', () => {
   it('Renders CharacterCard', () => {
-    renderWithProviders(<CharacterCard character={testCharacter} onOpen={mockCardClick} />);
+    renderWithProvidersRTKQuery(<CharacterCard character={testCharacter} onOpen={mockCardClick} />);
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Rick Sanchez');
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByText(/Gender/i)).toHaveTextContent('Gender: Male');
-    renderHook(() => useAppDispatch(), { wrapper: Wrapper });
+    renderHook(() => useAppDispatchRTKQuery(), { wrapper: Wrapper });
   });
 });

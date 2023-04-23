@@ -3,11 +3,11 @@ import { MemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 
 import { App } from '../App';
-import { renderWithProviders } from '../utils/TestUtils';
+import { renderWithProvidersThunks } from '../utils/TestUtilsThunks';
 
 describe('About Us page', () => {
   it('Renders About Us page', () => {
-    renderWithProviders(
+    renderWithProvidersThunks(
       <MemoryRouter initialEntries={['/AboutUs']}>
         <App />
       </MemoryRouter>

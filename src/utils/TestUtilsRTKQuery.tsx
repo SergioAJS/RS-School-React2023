@@ -3,25 +3,25 @@ import { Provider } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
-import { setupStore } from '../redux/setupStore';
+import { setupStoreRTKQuery } from '../redux/setupStoreRTKQuery';
 
 import type { RenderOptions } from '@testing-library/react';
 import type { PreloadedState } from '@reduxjs/toolkit';
-import type { AppStore, RootState } from '../redux/setupStore';
+import type { AppStoreRTKQuery, RootStateRTKQuery } from '../redux/setupStoreRTKQuery';
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  preloadedState?: PreloadedState<RootState>;
-  store?: AppStore;
+  preloadedState?: PreloadedState<RootStateRTKQuery>;
+  store?: AppStoreRTKQuery;
 }
 
-export function renderWithProviders(
+export function renderWithProvidersRTKQuery(
   ui: React.ReactElement,
   {
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
-    store = setupStore(preloadedState),
+    store = setupStoreRTKQuery(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {

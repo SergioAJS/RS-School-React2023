@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../../hooks/hooks';
+import { useAppDispatchThunks } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
 import { setCharacterId } from '../../redux/slices/searchCharacterSlice';
 import styles from './CharacterCard.module.scss';
@@ -9,7 +9,7 @@ export interface CardProps {
 }
 
 export const CharacterCard = (props: CardProps) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatchThunks();
 
   const handleClick = () => {
     props.onOpen();

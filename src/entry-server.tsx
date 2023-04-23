@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom/server';
 
 import { App } from './App';
-import { setupStore } from './redux';
+import { setupStoreThunks } from './redux';
 
 export function render(url: string, opts: RenderToPipeableStreamOptions) {
   const stream = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
-      <Provider store={setupStore()}>
+      <Provider store={setupStoreThunks()}>
         <StaticRouter location={url}>
           <App />
         </StaticRouter>

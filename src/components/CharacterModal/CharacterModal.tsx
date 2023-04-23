@@ -1,5 +1,7 @@
-import { useAppSelector } from '../../hooks/hooks';
-import { useGetCharacterByIdQuery } from '../../redux/API/charactersApi';
+import { useEffect } from 'react';
+
+import { useAppDispatchThunks, useAppSelectorThunks } from '../../hooks/hooks';
+import { fetchCharacter } from '../../redux/API/charactersApiThunks';
 import closeIcon from '../../resources/close.svg';
 import { Loader } from '../Loader/Loader';
 import styles from './CharacterModal.module.scss';
@@ -9,15 +11,20 @@ interface ModalProps {
 }
 
 export const CardModal = (props: ModalProps) => {
-  const characterId = useAppSelector((store) => store.searchCharacter.characterId);
-  const { data, isFetching } = useGetCharacterByIdQuery(characterId);
+  const dispatch = useAppDispatchThunks();
+  const characterId = useAppSelectorThunks((store) => store.searchCharacter.characterId);
+  const { character, isLoadingChar } = useAppSelectorThunks((store) => store.characterCards);
+
+  useEffect(() => {
+    dispatch(fetchCharacter(characterId));
+  }, [characterId, dispatch]);
 
   return (
     <>
       <div className={styles.overlay} onClick={props.onClose}></div>
       <div className={styles.modal}>
-        {isFetching && <Loader />}
-        {!isFetching && (
+        {isLoadingChar && <Loader />}
+        {!isLoadingChar && (
           <>
             <img
               className={styles.close}
@@ -26,16 +33,16 @@ export const CardModal = (props: ModalProps) => {
               title="Close"
               onClick={props.onClose}
             />
-            <h3 className={styles.name}>{data?.name}</h3>
-            <img className={styles.image} src={data?.image} alt={data?.name} />
+            <h3 className={styles.name}>{character?.name}</h3>
+            <img className={styles.image} src={character?.image} alt={character?.name} />
             <div className={styles.description}>
-              <p className={styles.description_param}>ID: {data?.id}</p>
-              <p className={styles.description_param}>Status: {data?.status}</p>
-              <p className={styles.description_param}>Species: {data?.species}</p>
-              <p className={styles.description_param}>Type: {data?.type}</p>
-              <p className={styles.description_param}>Gender: {data?.gender}</p>
-              <p className={styles.description_param}>Origin: {data?.origin.name}</p>
-              <p className={styles.description_param}>Location: {data?.location.name}</p>
+              <p className={styles.description_param}>ID: {character?.id}</p>
+              <p className={styles.description_param}>Status: {character?.status}</p>
+              <p className={styles.description_param}>Species: {character?.species}</p>
+              <p className={styles.description_param}>Type: {character?.type}</p>
+              <p className={styles.description_param}>Gender: {character?.gender}</p>
+              <p className={styles.description_param}>Origin: {character?.origin.name}</p>
+              <p className={styles.description_param}>Location: {character?.location.name}</p>
             </div>
           </>
         )}

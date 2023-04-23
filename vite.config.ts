@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/setup.ts'],
+    setupFiles: ['./src/setupRTKQuery.ts', './src/setupThunks.ts'],
+    exclude: ['./src/testsRTKQuery', 'node_modules', 'dist', 'coverage'],
   },
 });

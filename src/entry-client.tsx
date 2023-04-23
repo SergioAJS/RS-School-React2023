@@ -6,12 +6,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
-import { setupStore } from './redux';
+import { setupStoreThunks } from './redux';
 
 ReactDOM.hydrateRoot(
   document.getElementById('root') as HTMLElement,
   <StrictMode>
-    <Provider store={setupStore()}>
+    <Provider store={setupStoreThunks()}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

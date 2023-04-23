@@ -3,10 +3,10 @@ import { Provider } from 'react-redux';
 
 import { renderHook } from '@testing-library/react';
 
-import { setupStore, useGetCharacterByIdQuery } from '../redux';
+import { setupStoreRTKQuery, useGetCharacterByIdQuery } from '../redux';
 
 function Wrapper(props: { children: ReactNode }) {
-  return <Provider store={setupStore()}>{props.children}</Provider>;
+  return <Provider store={setupStoreRTKQuery()}>{props.children}</Provider>;
 }
 
 it('renders getCharacterById hook', async () => {

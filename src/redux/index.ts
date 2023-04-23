@@ -1,2 +1,3 @@
-export * from './setupStore';
-export * from './API/charactersApi';
+export * from './setupStoreRTKQuery';
+export * from './setupStoreThunks';
+export * from './API/charactersApiRTKQuery';

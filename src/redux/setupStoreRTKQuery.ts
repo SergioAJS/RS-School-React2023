@@ -1,7 +1,7 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 
-import charactersApiReducer, { charactersApi } from './API/charactersApi';
-import characterCardsReducer from './slices/characterCardsSlice';
+import charactersApiReducer, { charactersApi } from './API/charactersApiRTKQuery';
+import characterCardsReducer from './slices/characterCardsSliceRTKQuery';
 import formPageReducer from './slices/formPageSlice';
 import searchCharacterReducer from './slices/searchCharacterSlice';
 
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   characterCards: characterCardsReducer,
 });
 
-export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+export const setupStoreRTKQuery = (preloadedState?: PreloadedState<RootStateRTKQuery>) => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(charactersApi.middleware),
@@ -21,6 +21,6 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   });
 };
 
-export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore['dispatch'];
+export type RootStateRTKQuery = ReturnType<typeof rootReducer>;
+export type AppStoreRTKQuery = ReturnType<typeof setupStoreRTKQuery>;
+export type AppDispatchRTKQuery = AppStoreRTKQuery['dispatch'];

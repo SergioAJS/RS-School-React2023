@@ -14,7 +14,7 @@ describe('tests for formPageSlice', () => {
     const formCards: IFormCardData[] = [
       {
         firstName: 'Sergio',
-        deliveryDate: '12-12-2.23',
+        deliveryDate: '12-12-2023',
         country: Countries.Uzbekistan,
         packageOption: [Packages.Regular, Packages.Fragile],
         payment: Payments.Cash,
