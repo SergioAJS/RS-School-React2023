@@ -17,8 +17,10 @@ export async function render(url: string, opts: RenderToPipeableStreamOptions) {
       return cards;
     } catch (error) {}
   }
+
   const initialCards: ICharacter[] | undefined = await fetchCards().then((data) => data);
   let initCharCards;
+
   if (initialCards) {
     initCharCards = {
       characterCards: initialCards,
@@ -32,10 +34,11 @@ export async function render(url: string, opts: RenderToPipeableStreamOptions) {
   const preloadedState = JSON.stringify(
     setupStoreThunks({ characterCards: initCharCards }).getState()
   ).replace(/</g, '\\u003c');
+  const store = setupStoreThunks({ characterCards: initCharCards });
 
   const stream = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
-      <Provider store={setupStoreThunks({ characterCards: initCharCards })}>
+      <Provider store={store}>
         <StaticRouter location={url}>
           <App />
           <script

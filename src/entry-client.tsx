@@ -9,12 +9,14 @@ import { App } from './App';
 import { setupStoreThunks } from './redux';
 
 const preloadedState = window.__PRELOADED_STATE__;
+
+const store = setupStoreThunks(preloadedState);
 delete window.__PRELOADED_STATE__;
 
 ReactDOM.hydrateRoot(
   document.getElementById('root') as HTMLElement,
   <StrictMode>
-    <Provider store={setupStoreThunks(preloadedState)}>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

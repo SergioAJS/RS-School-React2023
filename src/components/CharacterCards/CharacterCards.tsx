@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useAppDispatchThunks, useAppSelectorThunks } from '../../hooks/hooks';
 import { ICharacter } from '../../models/ICharacter';
@@ -17,10 +17,19 @@ export const Cards = (props: CardsProps) => {
     (state) => state.characterCards
   );
   const searchValue = useAppSelectorThunks((state) => state.searchCharacter.searchValue);
+  const isFirstRender = useRef(false);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      dispatch(fetchCharacters(searchValue));
+    }
+  }, [dispatch, searchValue]);
 
   useEffect(() => {
-    dispatch(fetchCharacters(searchValue));
-  }, [dispatch, searchValue]);
+    isFirstRender.current = true;
+    return () => {
+      isFirstRender.current = false;
+    };
+  }, []);
 
   const renderCharacters = (characters: ICharacter[] | undefined) => {
     if (characters)
