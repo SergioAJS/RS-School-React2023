@@ -27,15 +27,15 @@ describe('Home page', () => {
     fireEvent.input(searchInput, { target: { value: 'rick' } });
     expect(searchInput).toHaveValue('rick');
 
-    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(searchButton);
 
     await screen.findByText(/Rick Sanchez/i);
   });
 
-  it('handles error response', async () => {
+  it('Show message for user if character name does not exist', async () => {
     server.use(
       rest.get('https://rickandmortyapi.com/api/character', (req, res, ctx) => {
-        return res(ctx.status(500));
+        return res(ctx.status(404));
       })
     );
 
@@ -44,6 +44,16 @@ describe('Home page', () => {
         <App />
       </MemoryRouter>
     );
+
+    const searchInput: HTMLInputElement = screen.getByPlaceholderText(
+      'You can search by the character name'
+    );
+    const searchButton = screen.getByRole('button');
+
+    fireEvent.input(searchInput, { target: { value: 'rick-chick' } });
+    expect(searchInput).toHaveValue('rick-chick');
+
+    fireEvent.click(searchButton);
 
     await screen.findByText(/Name does not exist/i);
   });
