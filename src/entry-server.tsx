@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { response, Response } from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
@@ -10,13 +10,14 @@ import { fetchCharacters } from './redux/API/charactersApiThunks';
 import { RenderFullPage } from './RenderFullPage';
 
 export async function handleRender(url: string, res: Response) {
+  let didError = false;
   const store = setupStoreThunks();
 
   await store.dispatch(fetchCharacters(''));
 
   const preloadedState = JSON.stringify(store.getState()).replace(/</g, '\\u003c');
 
-  const stream = ReactDOMServer.renderToPipeableStream(
+  const { pipe, abort } = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
       <RenderFullPage
         html={
@@ -31,11 +32,23 @@ export async function handleRender(url: string, res: Response) {
     </React.StrictMode>,
     {
       onShellReady() {
-        stream.pipe(res);
+        response.statusCode = didError ? 500 : 200;
+        pipe(res);
       },
-      onAllReady() {
-        res.end();
+      onShellError() {
+        response.statusCode = 500;
+        response.setHeader('content-type', 'text/html');
+        response.send('<h1>Something went wrong</h1>');
+      },
+      onError(error) {
+        didError = true;
+        const err = error as Error;
+        console.error(err);
       },
     }
   );
+
+  setTimeout(() => {
+    abort();
+  }, 10000);
 }
