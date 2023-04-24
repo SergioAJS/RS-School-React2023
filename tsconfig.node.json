@@ -6,8 +6,8 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "outDir": "./dist",
-    "noEmit": false
+    "tsBuildInfoFile": "./buildcache/tsconfig.node.tsbuildinfo",
+    "outDir": "./dist"
   },
   "include": ["server.ts"]
 }

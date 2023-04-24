@@ -23,3 +23,9 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Test results
+coverage
+
+# Cache
+buildcache
