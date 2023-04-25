@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress';
+
 import registerCodeCoverageTasks from '@cypress/code-coverage/task';
 
 export default defineConfig({

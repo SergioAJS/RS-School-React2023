@@ -1,10 +1,11 @@
+import { rest } from 'msw';
+import { MemoryRouter } from 'react-router-dom';
+
 import { fireEvent, screen } from '@testing-library/react';
 
-import { renderWithProvidersThunks } from '../utils/TestUtilsThunks';
-import { rest } from 'msw';
-import server from '../mock/testServer';
-import { MemoryRouter } from 'react-router-dom';
 import { App } from '../App';
+import server from '../mock/testServer';
+import { renderWithProvidersThunks } from '../utils/TestUtilsThunks';
 
 const testCharacter = {
   id: 1,

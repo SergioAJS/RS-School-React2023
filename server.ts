@@ -1,8 +1,8 @@
 import express from 'express';
+import { resolve } from 'path';
 import serveStatic from 'serve-static';
 import url from 'url';
-import { resolve } from 'path';
-import { ViteDevServer, createServer as createViteServer } from 'vite';
+import { createServer as createViteServer, ViteDevServer } from 'vite';
 
 let vite: ViteDevServer;
 const port = process.env.PORT || 8080;

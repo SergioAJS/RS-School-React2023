@@ -1,11 +1,12 @@
-import { fireEvent, screen } from '@testing-library/react';
-
-import { renderWithProvidersThunks } from '../utils/TestUtilsThunks';
 import { rest } from 'msw';
 import { MemoryRouter } from 'react-router-dom';
+
+import { fireEvent, screen } from '@testing-library/react';
+
 import { App } from '../App';
 import { testCharacter } from '../mock/handlers';
 import server from '../mock/testServer';
+import { renderWithProvidersThunks } from '../utils/TestUtilsThunks';
 
 describe('Open card modal and close on click', () => {
   it('Renders card modal and then close by user click', async () => {
