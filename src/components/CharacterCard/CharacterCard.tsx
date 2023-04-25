@@ -23,6 +23,7 @@ export const CharacterCard = (props: CardProps) => {
       className={styles.card}
       title={`More info about ${props.character.name}`}
       onClick={handleClick}
+      data-cy="character-card"
     >
       <h3 className={styles.title}>{props.character.name}</h3>
       <img className={styles.image} src={props.character.image} alt={props.character.name} />

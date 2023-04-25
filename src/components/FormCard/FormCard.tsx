@@ -20,7 +20,7 @@ export const FormCard = (props: FormCardProps) => {
 
   return (
     <>
-      <div className={styles.form_card}>
+      <div className={styles.form_card} data-cy="form-card">
         <h3 className={styles.name}>Name: {props.formData.firstName}</h3>
         <img className={styles.image} src={props.formData.imageFile} alt={'your image'} />
         <div className={styles.description}>

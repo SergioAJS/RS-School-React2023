@@ -39,7 +39,15 @@ export const Cards = (props: CardsProps) => {
   };
 
   if (errorChars) {
-    return <>{errorChars && <p className={styles.error}>Name does not exist</p>}</>;
+    return (
+      <>
+        {errorChars && (
+          <p className={styles.error} data-cy="wrong-name">
+            Name does not exist
+          </p>
+        )}
+      </>
+    );
   }
 
   return (

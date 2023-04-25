@@ -9,7 +9,9 @@ export const AboutUs = () => {
       <Header />
       <h1 className={styles.heading}>About Us</h1>
       <Link className={styles.link__home} to="/">
-        <button className={styles.button}>To Home Page</button>
+        <button className={styles.button} data-cy="to-home">
+          To Home Page
+        </button>
       </Link>
     </div>
   );

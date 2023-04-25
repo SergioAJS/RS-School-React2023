@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.nyc_output
+vite.config.ts.timestamp-*.mjs
 
 node_modules
 dist
@@ -26,6 +28,9 @@ coverage
 
 # Test results
 coverage
+cypress-coverage
+cypress/screenshots
+cypress/videos
 
 # Cache
 buildcache

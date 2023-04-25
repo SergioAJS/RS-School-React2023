@@ -22,7 +22,7 @@ export const CardModal = (props: ModalProps) => {
   return (
     <>
       <div className={styles.overlay} onClick={props.onClose}></div>
-      <div className={styles.modal}>
+      <div className={styles.modal} data-cy="modal">
         {isLoadingChar && <Loader />}
         {!isLoadingChar && (
           <>
@@ -32,6 +32,7 @@ export const CardModal = (props: ModalProps) => {
               alt="close"
               title="Close"
               onClick={props.onClose}
+              data-cy="close"
             />
             <h3 className={styles.name}>{character?.name}</h3>
             <img className={styles.image} src={character?.image} alt={character?.name} />

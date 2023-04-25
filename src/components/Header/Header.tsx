@@ -13,6 +13,7 @@ export const Header = () => {
                 isPending ? styles.link : isActive ? styles.link__active : styles.link
               }
               to="/"
+              data-cy="home-link"
             >
               Home
             </NavLink>
@@ -23,6 +24,7 @@ export const Header = () => {
                 isPending ? styles.link : isActive ? styles.link__active : styles.link
               }
               to="/Form"
+              data-cy="form-link"
             >
               Form
             </NavLink>
@@ -33,6 +35,7 @@ export const Header = () => {
                 isPending ? styles.link : isActive ? styles.link__active : styles.link
               }
               to="/AboutUs"
+              data-cy="aboutUs-link"
             >
               About Us
             </NavLink>

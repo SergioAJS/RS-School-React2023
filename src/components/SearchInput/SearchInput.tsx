@@ -24,7 +24,7 @@ export const SearchInput = () => {
   }, [dispatch, inputValue]);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit} data-cy="submit-search">
       <label htmlFor="search">
         <input
           className={styles.search}
@@ -33,6 +33,7 @@ export const SearchInput = () => {
           placeholder="You can search by the character name"
           value={inputValue}
           onChange={onChange}
+          data-cy="character-search"
         />
       </label>
       <input className={styles.submit} type="submit" value="Search" />
