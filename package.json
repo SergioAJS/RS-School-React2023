@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.ts",
+    "dev": "nodemon src/server.ts",
     "buildAll": "npm run build:client-entry && npm run build:server-entry && npm run build:server",
     "build:client-entry": "tsc && vite build",
     "build:server-entry": "tsc && vite build --config vite.server.config.ts --ssr ./src/entry-server.tsx",
-    "build:server": "tsc -b tsconfig.node.json",
+    "build:server": "tsc -b",
     "preview": "cross-env NODE_ENV=production node dist/server.js",
     "test": "vitest",
     "coverage": "vitest --coverage",
@@ -18,7 +18,8 @@
     "cy:run": "cypress run && nyc report --reporter=text --reporter=text-summary",
     "cy:clean-coverage": "npx rimraf cypress-coverage",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -56,6 +57,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
     "jsdom": "^21.1.0",
     "lint-staged": "^13.2.1",
     "msw": "^1.2.1",
@@ -73,11 +75,8 @@
     "vitest": "^0.29.2"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
-      "eslint --fix"
-    ],
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
+    "src/**/*.{js,jsx,ts,tsx,json}": ["eslint --fix", "prettier --write"],
+    "src/**/*.{css,scss,md}": "prettier --write",
+    "cypress/**/*{js,jsx,ts,tsx,json}": ["eslint --fix", "prettier --write"]
   }
 }

@@ -1,5 +1,5 @@
 {
   "verbose": true,
-  "watch": ["src", "server.ts"],
+  "watch": ["src", "src/server.ts"],
   "ignore": ["src/testsThunks", "src/mock"]
 }
