@@ -21,6 +21,9 @@
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "prepare": "husky install"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "compression": "^1.7.4",
