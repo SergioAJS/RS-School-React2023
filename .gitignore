@@ -35,6 +35,3 @@ cypress/downloads
 
 # Cache
 buildcache
-
-# dotenv environment variables file
-.env
