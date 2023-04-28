@@ -13,3 +13,5 @@ jobs:
         with:
           build: npm run buildAll
           start: npm run preview
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

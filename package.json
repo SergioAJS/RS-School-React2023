@@ -16,6 +16,7 @@
     "cy:start-run": "start-server-and-test dev http://localhost:8080 cy:run",
     "cy:open": "cypress open && nyc report --reporter=text --reporter=text-summary",
     "cy:run": "cypress run && nyc report --reporter=text --reporter=text-summary",
+    "cy:run-record": "cypress run --record",
     "cy:clean-coverage": "npx rimraf cypress-coverage",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
